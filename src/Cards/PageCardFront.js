@@ -6,7 +6,7 @@ class PageCardFront extends Component {
         return(
             <div>
                 PageCardFront
-                <Data />
+                <Data page={this.props.page} />
             </div>
         )
     }

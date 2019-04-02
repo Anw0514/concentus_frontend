@@ -22,8 +22,8 @@ class App extends Component {
       <div className="App">
         <NavBar /><br />
         <Discover /><br />
-        <PageForm /><br />
-        <PageIndex />
+        <PageForm page={this.state.selectedPage} /><br />
+        <PageIndex pages={this.state.myPages} />
       </div>
     );
   }

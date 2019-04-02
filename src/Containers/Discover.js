@@ -17,9 +17,9 @@ class Discover extends Component {
         return (
             <div>
                 <strong>Discover</strong>
-                <SearchBar />
+                <SearchBar searchTerm={this.state.searchTerm} type={this.state.pageType} />
                 <br />
-                <PageIndex />
+                <PageIndex pages={this.state.pages} />
             </div>
         )
     }
