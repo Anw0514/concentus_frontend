@@ -6,6 +6,17 @@ import PageIndex from '../Indexes/PageIndex'
 import '../App.css';
 
 class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      myPages: [],
+      bookings: [],
+      selectedPage: {},
+      user: {}
+    }
+  }
+
   render() {
     return (
       <div className="App">
