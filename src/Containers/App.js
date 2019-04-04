@@ -17,6 +17,12 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch("http://localhost:3000/users/2/info")
+    .then(resp=> resp.json())
+    .then(userInfo => console.log(userInfo))
+  }
+
   render() {
     return (
       <div className="App">

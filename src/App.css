@@ -5,6 +5,17 @@
   height: 100vh;
 }
 
+.ui.inverted.pointing.secondary.menu {
+  background-image: linear-gradient(rgb(0, 172, 163), rgba(0, 172, 163, 0));
+  border-width: 0px !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.ui.menu .item> i.icon {
+  margin: 0px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
