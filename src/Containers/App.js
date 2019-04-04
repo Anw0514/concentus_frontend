@@ -11,6 +11,7 @@ class App extends Component {
     super()
     this.state = {
       myPages: [],
+      discoverPages: [],
       bookings: [],
       selectedPage: {},
       user: {}
@@ -18,16 +19,21 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/users/2/info")
+    fetch("http://localhost:3000/users/1/info")
     .then(resp=> resp.json())
-    .then(userInfo => console.log(userInfo))
+    .then(userInfo => {
+      this.setState({
+        myPages: userInfo.my_pages,
+        discoverPages: userInfo.discover_pages
+      })
+    })
   }
 
   render() {
     return (
       <div className="App">
         <NavBar /><br />
-        <Discover /><br />
+        <Discover pages={this.state.discoverPages}/><br />
         <PageForm page={this.state.selectedPage} /><br />
         <PageIndex pages={this.state.myPages} />
       </div>

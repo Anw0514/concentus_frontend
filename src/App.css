@@ -1,8 +1,8 @@
 .App {
   text-align: center;
   background-color: #282c34;
-  color: white;
-  height: 100vh;
+  color: red;
+  min-height: 100vh;
 }
 
 .ui.inverted.pointing.secondary.menu {
@@ -13,7 +13,7 @@
 }
 
 .ui.menu .item> i.icon {
-  margin: 0px;
+  margin: 0px !important;
 }
 
 .App-logo {

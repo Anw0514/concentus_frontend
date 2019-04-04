@@ -7,7 +7,6 @@ class Discover extends Component {
     constructor() {
         super()
         this.state = {
-            pages: [],
             searchTerm: '',
             pageType: ''
         }
@@ -19,7 +18,7 @@ class Discover extends Component {
                 <strong>Discover</strong>
                 <SearchBar searchTerm={this.state.searchTerm} type={this.state.pageType} />
                 <br />
-                <PageIndex pages={this.state.pages} />
+                <PageIndex pages={this.props.pages} />
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PageCardFront from '../Cards/PageCardFront'
 import PageCardBack from "../Cards/PageCardBack";
+import {Card} from 'semantic-ui-react'
 
 class PageIndex extends Component {
 
@@ -11,18 +12,24 @@ class PageIndex extends Component {
         }
     }
 
+    handleToBack() {
+
+    }
+
     render() {
         return (
-            <div>
-                PageIndex
-                {this.props.pages.map(page => {
-                    return page === this.state.pageBack ?
-                    <PageCardBack page={page} /> :
-                    <PageCardFront page={page} />
-                })}
-                <br />
-            </div>
-        )
+          <div>
+            <Card.Group centered>
+              {this.props.pages.map(page => {
+                return page === this.state.pageBack ? (
+                  <PageCardBack page={page} />
+                ) : (
+                  <PageCardFront page={page} toBack={this.handleToBack} />
+                );
+              })}
+            </Card.Group>
+          </div>
+        );
     }
 }
 

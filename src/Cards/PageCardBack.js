@@ -1,10 +1,15 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { Card } from 'semantic-ui-react'
 
 class PageCardBack extends Component {
     render() {
         return (
-            <div>PageCardBack</div>
-        )
+          <Card>
+            <Card.Content>
+              Yo
+            </Card.Content>
+          </Card>
+        );
     }
 }
 

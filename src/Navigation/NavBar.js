@@ -6,6 +6,7 @@ class NavBar extends Component {
         return (
           <div>
             <Menu inverted pointing secondary>
+            <Menu.Item name="Concentus" active={false}><h1>Concentus</h1></Menu.Item>
               <Menu.Menu position="right">
                 <Menu.Item name="discover" active={false} onclick={() => {}}><Icon name="list ul" size="big"/></Menu.Item>
                 <Dropdown item icon="big user circle" simple >
