@@ -12,8 +12,10 @@ class PageIndex extends Component {
         }
     }
 
-    handleToBack() {
-
+    handleToBack = (page) => {
+        this.setState({
+            pageBack: page
+        })
     }
 
     render() {
@@ -22,7 +24,7 @@ class PageIndex extends Component {
             <Card.Group centered>
               {this.props.pages.map(page => {
                 return page === this.state.pageBack ? (
-                  <PageCardBack page={page} />
+                  <PageCardBack page={this.state.pageBack} toBack={this.handleToBack} />
                 ) : (
                   <PageCardFront page={page} toBack={this.handleToBack} />
                 );
