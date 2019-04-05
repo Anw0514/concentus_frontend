@@ -12,6 +12,10 @@
   padding-right: 10px;
 }
 
+.ui.left.floated.header {
+  margin: 0px; 
+}
+
 .ui.menu .item> i.icon {
   margin: 0px !important;
 }

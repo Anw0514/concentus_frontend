@@ -3,6 +3,12 @@ import NavBar from '../Navigation/NavBar'
 import Discover from './Discover'
 import PageForm from '../Forms/PageForm'
 import PageIndex from '../Indexes/PageIndex'
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
 import '../App.css';
 
 class App extends Component {
@@ -31,12 +37,25 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <NavBar /><br />
-        <Discover pages={this.state.discoverPages}/><br />
-        <PageForm page={this.state.selectedPage} /><br />
-        <PageIndex pages={this.state.myPages} />
-      </div>
+      <Router>
+        <div className="App">
+          <NavBar />
+          <Switch>
+            <Route
+              exact path="/discover"
+              render={() => <Discover pages={this.state.discoverPages} />}
+            />
+            <Route
+              exact path="/create"
+              render={() => <PageForm page={this.state.selectedPage} />}
+            />
+            <Route
+              exact path="/mypages"
+              render={() => <PageIndex pages={this.state.myPages} />}
+            />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
