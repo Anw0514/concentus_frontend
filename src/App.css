@@ -12,6 +12,10 @@
   padding-right: 10px;
 }
 
+.pageDiv {
+  margin-top: 20px;
+}
+
 .ui.inverted.menu .item {
   color: rgba(255,255,255,.9);
 }

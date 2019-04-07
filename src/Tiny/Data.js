@@ -20,7 +20,7 @@ class Data extends Component {
                 <Header as="h4" floated="left">Genres: </Header>
                 {this.props.page.genres.map(genre => {
                     return (
-                        <Label as="a" color="teal" tag>
+                        <Label color="teal" tag>
                     {genre}
                     </Label>
                 )})}
@@ -30,7 +30,7 @@ class Data extends Component {
                 <Header as="h4" floated="left">Looking For: </Header>
                 {this.props.page.looking_for.map(looking_for => {
                 return (
-                    <Label as='a' color="teal" tag >
+                    <Label color="teal" tag >
                     {looking_for}
                     </Label>
                 )})}

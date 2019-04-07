@@ -51,7 +51,7 @@ class App extends Component {
             />
             <Route
               exact path="/mypages"
-              render={() => <PageIndex pages={this.state.myPages} />}
+              render={() => <div className='pageDiv'><PageIndex pages={this.state.myPages} /></div>}
             />
           </Switch>
         </div>

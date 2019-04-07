@@ -14,7 +14,7 @@ class Discover extends Component {
 
     render() {
         return (
-            <div>
+            <div className='pageDiv'>
                 <strong>Discover</strong>
                 <SearchBar searchTerm={this.state.searchTerm} type={this.state.pageType} />
                 <br />
