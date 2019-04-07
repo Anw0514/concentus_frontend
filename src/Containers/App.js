@@ -25,6 +25,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // change user_id to be dynamic
     fetch("http://localhost:3000/users/2/info")
     .then(resp=> resp.json())
     .then(userInfo => {
@@ -35,11 +36,26 @@ class App extends Component {
     })
   }
 
-  handleNewPage = (page) => {
-    // adds a new page after it has been posted to the database
-    this.setState({
-      myPages: this.state.myPages.push(page)
-    })
+  handleNewPage = (type, name, zip) => {
+    // adds a new page after it has been posted to the databas
+
+    fetch(`http://localhost:3000/${type}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        zip: zip,
+        user_id: 2
+      }),
+    }).then(resp => resp.json())
+      .then(page => {
+        console.log(page, this)
+        this.setState({
+          myPages: [...this.state.myPages, page]
+    })})
+    // might be a source of bugs
   }
 
   render() {

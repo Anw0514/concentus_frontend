@@ -16,7 +16,7 @@ class PageForm extends Component {
   }
 
   handleChangeZip = (e) => {
-    this.setState({ zip: e.target.value });
+    this.setState({ zip: parseInt(e.target.value) });
   }
 
   handleChangeType = (e, { value }) => {
@@ -24,18 +24,8 @@ class PageForm extends Component {
   }
 
   handleSubmitForm = () => {
-    fetch(`http://localhost:3000/${this.state.type}`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: this.state.name,
-        zip: this.state.zip,
-        user_id: 2
-      })
-    }).then(resp => resp.json()).then(page => this.props.addPage(page));
+    // !!! change user id to be fluid
+    this.props.addPage(this.state.type, this.state.name, this.state.zip);
   }
 
   render() {
@@ -82,7 +72,7 @@ class PageForm extends Component {
             />
           </Form.Group>
           <Form.TextArea label="Bio" placeholder="Tell us more about you..." />
-          <Form.Button onClick={this.handleSubmitForm}>Submit</Form.Button>
+          <Form.Button onClick={() => this.handleSubmitForm()}>Submit</Form.Button>
         </Form>
       </Segment>
     );
