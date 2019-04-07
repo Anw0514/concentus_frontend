@@ -24,9 +24,16 @@ class PageIndex extends Component {
             <Card.Group centered>
               {this.props.pages.map(page => {
                 return page === this.state.pageBack ? (
-                  <PageCardBack page={this.state.pageBack} toBack={this.handleToBack} />
+                  <PageCardBack
+                    page={this.state.pageBack}
+                    toBack={this.handleToBack}
+                    removePage={this.props.removePage}
+                  />
                 ) : (
-                  <PageCardFront page={page} toBack={this.handleToBack} />
+                  <PageCardFront
+                    page={page}
+                    toBack={this.handleToBack}
+                  />
                 );
               })}
             </Card.Group>

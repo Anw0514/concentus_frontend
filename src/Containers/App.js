@@ -56,6 +56,18 @@ class App extends Component {
       })})
   }
 
+  handleRemovePage = (page) => {
+    const newPages = this.state.myPages.filter(checkpage => page.id !== checkpage.id)
+    fetch(`http://localhost:3000/${page.model.toLowerCase() + 's'}/${page.id}`, {
+      method: 'DELETE'
+    }).then(resp => resp.json()).then(deletedPage => {
+      console.log(deletedPage)
+      this.setState({
+      myPages: newPages
+      })
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -72,7 +84,7 @@ class App extends Component {
             />
             <Route
               exact path="/mypages"
-              render={() => <div className='pageDiv'><PageIndex pages={this.state.myPages} /></div>}
+              render={() => <div className='pageDiv'><PageIndex pages={this.state.myPages} removePage={this.handleRemovePage} /></div>}
             />
           </Switch>
         </div>
