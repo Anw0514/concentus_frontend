@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Segment, Form } from 'semantic-ui-react';
+import {Redirect} from 'react-router-dom'
 
 class PageForm extends Component {
   constructor() {
@@ -7,7 +8,8 @@ class PageForm extends Component {
     this.state = {
       name: "",
       zip: 20000,
-      type: ""
+      type: "",
+      redirect: false
     };
   }
 
@@ -26,9 +28,17 @@ class PageForm extends Component {
   handleSubmitForm = () => {
     // !!! change user id to be fluid
     this.props.addPage(this.state.type, this.state.name, this.state.zip);
+    this.setState({
+      redirect: true
+    })
   }
 
   render() {
+
+    if (this.state.redirect) {
+      return <Redirect to="/mypages" />
+    }
+
     return (
       <Segment>
         <Form>

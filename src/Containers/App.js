@@ -51,11 +51,9 @@ class App extends Component {
       }),
     }).then(resp => resp.json())
       .then(page => {
-        console.log(page, this)
         this.setState({
           myPages: [...this.state.myPages, page]
-    })})
-    // might be a source of bugs
+      })})
   }
 
   render() {
