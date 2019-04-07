@@ -23,7 +23,7 @@ class NavBar extends Component {
         <Menu inverted pointing secondary>
         <Menu.Item name="Concentus" active={false}><h1>Concentus</h1></Menu.Item>
           <Menu.Menu position="right">
-              <Menu.Item name="discover" active={this.state.discoverActive} onclick={this.handleClick}>
+              <Menu.Item name="discover" active={false}>
               <NavLink to='/discover'><Icon name="list ul" size="big"/></NavLink>
               </Menu.Item>
             <Dropdown item icon="big user circle" simple >

@@ -25,13 +25,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/users/1/info")
+    fetch("http://localhost:3000/users/2/info")
     .then(resp=> resp.json())
     .then(userInfo => {
       this.setState({
         myPages: userInfo.my_pages,
         discoverPages: userInfo.discover_pages
       })
+    })
+  }
+
+  handleNewPage = (page) => {
+    // adds a new page after it has been posted to the database
+    this.setState({
+      myPages: this.state.myPages.push(page)
     })
   }
 
@@ -47,7 +54,7 @@ class App extends Component {
             />
             <Route
               exact path="/create"
-              render={() => <PageForm page={this.state.selectedPage} />}
+              render={() => <PageForm page={this.state.selectedPage} addPage={this.handleNewPage} />}
             />
             <Route
               exact path="/mypages"

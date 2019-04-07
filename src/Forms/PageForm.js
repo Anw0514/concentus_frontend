@@ -23,6 +23,21 @@ class PageForm extends Component {
     this.setState({ type: value });
   }
 
+  handleSubmitForm = () => {
+    fetch(`http://localhost:3000/${this.state.type}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        zip: this.state.zip,
+        user_id: 2
+      })
+    }).then(resp => resp.json()).then(page => this.props.addPage(page));
+  }
+
   render() {
     return (
       <Segment>
@@ -49,25 +64,25 @@ class PageForm extends Component {
             <label>Size</label>
             <Form.Radio
               label="Musician"
-              value="Musician"
-              checked={this.state.type === "Musician"}
+              value="musicians"
+              checked={this.state.type === "musicians"}
               onChange={this.handleChangeType}
             />
             <Form.Radio
               label="Venue"
-              value="Venue"
-              checked={this.state.type === "Venue"}
+              value="venues"
+              checked={this.state.type === "venues"}
               onChange={this.handleChangeType}
             />
             <Form.Radio
               label="Band"
-              value="Band"
-              checked={this.state.type === "Band"}
+              value="bands"
+              checked={this.state.type === "bands"}
               onChange={this.handleChangeType}
             />
           </Form.Group>
           <Form.TextArea label="Bio" placeholder="Tell us more about you..." />
-          <Form.Button>Submit</Form.Button>
+          <Form.Button onClick={this.handleSubmitForm}>Submit</Form.Button>
         </Form>
       </Segment>
     );
