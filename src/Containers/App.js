@@ -83,6 +83,10 @@ class App extends Component {
 
   }
 
+  handleLogin = (email, password) => {
+    // fetch("http://localhost:3000/login");
+  }
+
   render() {
     return (
       <Router>
@@ -108,7 +112,7 @@ class App extends Component {
             <Route
               exact
               path="/login"
-              render={() => <Login/>}
+              render={() => <Login handleLogin={this.handleLogin} />}
             />
             <Route
               exact

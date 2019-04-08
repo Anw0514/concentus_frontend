@@ -50,6 +50,30 @@ i.massive.icon {
   color: black !important;
 }
 
+.ui.middle.aligned.center.aligned.grid {
+  min-height: 80vh;
+}
+
+.link {
+  color: rgba(0, 172, 163, 1);
+}
+
+.login.field {
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 90%
+}
+
+.login.field.button {
+  background-color: rgba(0, 172, 163, 1);
+  height: 42.69px;
+  border-radius: 5px;
+  color: white;
+  padding: 9.85px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
