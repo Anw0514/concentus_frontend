@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PageIndex from "../Indexes/PageIndex";
+import PageIndex from "../Indices/PageIndex";
 import SearchBar from '../Navigation/SearchBar'
 
 class Discover extends Component {
@@ -18,7 +18,7 @@ class Discover extends Component {
                 <strong>Discover</strong>
                 <SearchBar searchTerm={this.state.searchTerm} type={this.state.pageType} />
                 <br />
-                <PageIndex pages={this.props.pages} />
+                <PageIndex pages={this.props.pages} discover={true} />
             </div>
         )
     }

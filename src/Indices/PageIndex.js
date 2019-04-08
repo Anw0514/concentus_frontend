@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PageCardFront from '../Cards/PageCardFront'
 import PageCardBack from "../Cards/PageCardBack";
-import {Card} from 'semantic-ui-react'
+import {Card, Icon} from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 class PageIndex extends Component {
 
@@ -20,8 +21,7 @@ class PageIndex extends Component {
 
     render() {
         return (
-          <div>
-            <Card.Group centered>
+            <Card.Group fluid>
               {this.props.pages.map(page => {
                 return page === this.state.pageBack ? (
                   <PageCardBack
@@ -36,8 +36,22 @@ class PageIndex extends Component {
                   />
                 );
               })}
+              {
+                this.props.discover ? null :
+                <Card color="teal">
+                  <Card.Content>
+                    <Card.Header>Add A Page</Card.Header>
+                    <Link to="/create">
+                    <Icon
+                      name="plus"
+                      size="massive"
+                      color="teal"
+                    />
+                    </Link>
+                  </Card.Content>
+                </Card>
+              }
             </Card.Group>
-          </div>
         );
     }
 }

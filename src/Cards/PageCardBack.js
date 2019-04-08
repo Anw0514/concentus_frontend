@@ -20,13 +20,13 @@ class PageCardBack extends Component {
                 basic
                 color="teal"
                 content="Edit"
-                onClick={() => this.props.removePage(this.props.page)}
+                onClick={() => {}}
               />
               <Button
                 basic
                 color="teal"
                 content="Delete"
-                onClick={() => this.props.removePage(this.props.page)}
+                onClick={() => {console.log(this); this.props.removePage(this.props.page)}}
               />
             </Card.Content>
           </Card>

@@ -9,44 +9,71 @@ class PageForm extends Component {
       name: "",
       zip: 20000,
       type: "",
+      bio: "",
+      file: "",
       redirect: false
     };
   }
 
-  handleChangeName = (e, { value }) => {
-    this.setState({ name: value });
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.page.model) {
+      const page = nextProps.page
+      this.setState({
+        name: page.name,
+        zip: page.zip,
+        type: page.model.toLowerCase + 's',
+        bio: page.bio
+      })
+    }
   }
 
-  handleChangeZip = (e) => {
+  handleChangeName = (e, { value }) => {
+    this.setState({ name: value });
+  };
+
+  handleChangeBio = (e, { value }) => {
+    this.setState({ bio: value });
+  };
+
+  handleChangeZip = e => {
     this.setState({ zip: parseInt(e.target.value) });
-  }
+  };
 
   handleChangeType = (e, { value }) => {
     this.setState({ type: value });
-  }
+  };
+
+  handleChangeFile = (e) => {
+    this.setState({ file: e.target.value });
+  };
 
   handleSubmitForm = () => {
     // !!! change user id to be fluid
-    this.props.addPage(this.state.type, this.state.name, this.state.zip);
+    this.props.addPage(
+      this.state.type,
+      this.state.name,
+      this.state.zip,
+      this.state.bio,
+      this.state.file
+    );
     this.setState({
       redirect: true
-    })
-  }
+    });
+  };
 
   render() {
-
     if (this.state.redirect) {
-      return <Redirect to="/mypages" />
+      return <Redirect to="/mypages" />;
     }
 
     return (
-      <Segment>
+      <Segment className='form'>
         <Form>
           <Form.Group widths="equal">
             <Form.Input
               fluid
               label="Name"
-              placeholder="First name"
+              placeholder="Display Name"
               onChange={this.handleChangeName}
             />
             <Form.Field
@@ -58,6 +85,14 @@ class PageForm extends Component {
               max={100000}
               min={10000}
               onChange={this.handleChangeZip}
+            />
+            <Form.Field
+              fluid
+              label="Profile Photo"
+              control="input"
+              type="file"
+              placeholder="Choose a file"
+              onChange={this.handleChangeFile}
             />
           </Form.Group>
           <Form.Group inline>
@@ -81,8 +116,14 @@ class PageForm extends Component {
               onChange={this.handleChangeType}
             />
           </Form.Group>
-          <Form.TextArea label="Bio" placeholder="Tell us more about you..." />
-          <Form.Button onClick={() => this.handleSubmitForm()}>Submit</Form.Button>
+          <Form.TextArea
+            label="Bio"
+            placeholder="Tell us more about you..."
+            onChange={this.handleChangeBio}
+          />
+          <Form.Button onClick={() => this.handleSubmitForm()}>
+            Submit
+          </Form.Button>
         </Form>
       </Segment>
     );

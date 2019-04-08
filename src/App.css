@@ -1,19 +1,37 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: rgb(218, 218, 218);
   color: red;
   min-height: 100vh;
 }
 
 .ui.inverted.pointing.secondary.menu {
-  background-image: linear-gradient(rgb(0, 172, 163), rgba(0, 172, 163, 0));
+  background-image: linear-gradient(rgba(0, 172, 163, 1), rgba(255,255,255, 0));
   border-width: 0px !important;
   padding-left: 10px;
   padding-right: 10px;
 }
 
+.ui.segment.form {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
 .pageDiv {
   margin-top: 20px;
+  justify-content: center;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.ui.cards {
+  align-self: center;
+}
+
+i.massive.icon {
+  vertical-align: middle;
+  font-size: 10em !important;
+  margin-top: 50px;
 }
 
 .ui.inverted.menu .item {
