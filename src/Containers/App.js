@@ -109,6 +109,26 @@ class App extends Component {
     // .then(resp => resp.json())
   }
 
+  handleRegister = ({ email, domain, password, name, zip, distance, distanceType}) => {
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email + domain,
+        password: password,
+        name: name,
+        zip: zip,
+        distance: distance,
+        distance_type: distanceType
+      })
+    }).then(resp => resp.json())
+    .then(user => {
+      this.setState({
+        user
+      })
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -149,7 +169,7 @@ class App extends Component {
                 <SignUp
                   redirect={this.state.loggedIn}
                   error={this.state.registerFailed}
-                  handleSignUp={this.handleRegister}
+                  handleRegister={this.handleRegister}
                 />
               )}
             />

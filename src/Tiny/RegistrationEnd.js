@@ -66,7 +66,7 @@ class RegistrationEnd extends Component {
             />
             <div
               className="login field button"
-              onClick={this.props.emailCheck}
+              onClick={this.props.signUp}
             >
               <h3>Submit</h3>
             </div>
