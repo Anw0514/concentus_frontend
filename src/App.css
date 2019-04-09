@@ -80,6 +80,10 @@ i.massive.icon {
   padding: 9.85px;
 }
 
+div.text.filtered{
+  min-width: 80px !important;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;

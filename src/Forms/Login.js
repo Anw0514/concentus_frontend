@@ -7,8 +7,7 @@ class Login extends Component {
     super();
     this.state = {
       email: "",
-      password: "",
-      signUp: false
+      password: ""
     };
   }
 
@@ -23,12 +22,6 @@ class Login extends Component {
       password: value
     });
   };
-
-  handleSignUpClick = () => {
-    this.setState({
-      signUp: true
-    })
-  }
 
   render() {
     return (
@@ -73,7 +66,7 @@ class Login extends Component {
           </Segment>
           <div className="ui message login container">
             New Here?{" "}
-            <Link to='/signup' className="link">
+            <Link to='/register' className="link">
               Sign Up
             </Link>
           </div>

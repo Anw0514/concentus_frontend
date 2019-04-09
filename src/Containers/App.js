@@ -3,6 +3,7 @@ import NavBar from '../Navigation/NavBar'
 import Discover from './Discover'
 import PageForm from '../Forms/PageForm'
 import Login from "../Forms/Login";
+import SignUp from '../Forms/Signup'
 import PageIndex from '../Indices/PageIndex'
 import {
   BrowserRouter as Router,
@@ -133,7 +134,24 @@ class App extends Component {
             <Route
               exact
               path="/login"
-              render={() => <Login redirect={this.state.loggedIn} error={this.state.loginFailed} handleLogin={this.handleLogin} />}
+              render={() => (
+                <Login
+                  redirect={this.state.loggedIn}
+                  error={this.state.loginFailed}
+                  handleLogin={this.handleLogin}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/register"
+              render={() => (
+                <SignUp
+                  redirect={this.state.loggedIn}
+                  error={this.state.registerFailed}
+                  handleSignUp={this.handleRegister}
+                />
+              )}
             />
             <Route
               exact
