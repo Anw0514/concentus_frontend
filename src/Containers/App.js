@@ -8,8 +8,8 @@ import PageIndex from '../Indices/PageIndex'
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
-  Switch
+  Switch,
+  Redirect
 } from "react-router-dom";
 import '../App.css';
 
@@ -26,19 +26,6 @@ class App extends Component {
       loginFailed: false,
       loggedIn: false
     }
-  }
-
-  componentDidMount() {
-    // !!! change user_id to be dynamic
-    // fetches all info related to a user
-    fetch("http://localhost:3000/users/2/info")
-    .then(resp=> resp.json())
-    .then(userInfo => {
-      this.setState({
-        myPages: userInfo.my_pages,
-        discoverPages: userInfo.discover_pages
-      })
-    })
   }
 
   handleNewPage = (type, name, zip, bio, img) => {
@@ -102,7 +89,10 @@ class App extends Component {
         })
       } else {
         this.setState({
-          user
+          user,
+          myPages: user.my_pages,
+          discoverPages: user.discover_pages,
+          loggedIn: true
         })
       }
     })
@@ -124,12 +114,16 @@ class App extends Component {
     }).then(resp => resp.json())
     .then(user => {
       this.setState({
-        user
+        user,
+        myPages: user.my_pages,
+        discoverPages: user.discover_pages,
+        loggedIn: true
       })
     })
   }
 
   render() {
+
     return (
       <Router>
         <div className="App">
@@ -138,12 +132,12 @@ class App extends Component {
             <Route
               exact
               path="/discover"
-              render={() => <Discover pages={this.state.discoverPages} />}
+              render={() =>( !this.state.loggedIn ? <Redirect to="/login" /> : <Discover pages={this.state.discoverPages} />)}
             />
             <Route
               exact
               path="/create"
-              render={() => (
+              render={() => ( !this.state.loggedIn ? <Redirect to="/login" /> :
                 <PageForm
                   page={this.state.selectedPage}
                   addPage={this.handleNewPage}
@@ -176,7 +170,7 @@ class App extends Component {
             <Route
               exact
               path="/mypages"
-              render={() => (
+              render={() => ( !this.state.loggedIn ? <Redirect to="/login" /> :
                 <div className="pageDiv">
                   <PageIndex
                     pages={this.state.myPages}
