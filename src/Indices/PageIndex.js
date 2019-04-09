@@ -28,6 +28,7 @@ class PageIndex extends Component {
                     page={this.state.pageBack}
                     toBack={this.handleToBack}
                     removePage={this.props.removePage}
+                    editPage={this.props.editPage}
                   />
                 ) : (
                   <PageCardFront

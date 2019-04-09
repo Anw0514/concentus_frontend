@@ -109,7 +109,7 @@ class SignUp extends Component {
     return (
       <div className="ui middle aligned center aligned grid">
         <div className="five wide column">
-          {this.state.step == 1 ? (
+          {this.state.step === 1 ? (
             <EmailCheck
               error={this.state.error}
               handleDomainChange={this.handleDomainChange}

@@ -20,7 +20,7 @@ class PageCardBack extends Component {
                 basic
                 color="teal"
                 content="Edit"
-                onClick={() => {}}
+                onClick={() => this.props.editPage(this.props.page)}
               />
               <Button
                 basic

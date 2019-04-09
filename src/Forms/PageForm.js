@@ -7,7 +7,7 @@ class PageForm extends Component {
     super();
     this.state = {
       name: "",
-      zip: 20000,
+      zip: null,
       type: "",
       bio: "",
       file: "",
@@ -15,13 +15,13 @@ class PageForm extends Component {
     };
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    if (nextProps.page.model) {
-      const page = nextProps.page
+  componentDidMount(){
+    if (this.props.page.model) {
+      const page = this.props.page
       this.setState({
         name: page.name,
         zip: page.zip,
-        type: page.model.toLowerCase + 's',
+        type: page.model.toLowerCase() + 's',
         bio: page.bio
       })
     }
@@ -49,13 +49,23 @@ class PageForm extends Component {
 
   handleSubmitForm = () => {
     // !!! change user id to be fluid
-    this.props.addPage(
-      this.state.type,
-      this.state.name,
-      this.state.zip,
-      this.state.bio,
-      this.state.file
-    );
+    if (this.props.page.model) {
+      this.props.updatePage(
+        this.state.type,
+        this.state.name,
+        this.state.zip,
+        this.state.bio,
+        this.state.file
+      );
+    } else {
+      this.props.addPage(
+        this.state.type,
+        this.state.name,
+        this.state.zip,
+        this.state.bio,
+        this.state.file
+      );
+    }
     this.setState({
       redirect: true
     });
@@ -67,13 +77,14 @@ class PageForm extends Component {
     }
 
     return (
-      <Segment className='form'>
+      <Segment className="form">
         <Form>
           <Form.Group widths="equal">
             <Form.Input
               fluid
               label="Name"
               placeholder="Display Name"
+              value={this.state.name}
               onChange={this.handleChangeName}
             />
             <Form.Field
@@ -84,6 +95,7 @@ class PageForm extends Component {
               placeholder="Zip Code"
               max={100000}
               min={10000}
+              value={this.state.zip}
               onChange={this.handleChangeZip}
             />
             <Form.Field
@@ -119,6 +131,7 @@ class PageForm extends Component {
           <Form.TextArea
             label="Bio"
             placeholder="Tell us more about you..."
+            value={this.state.bio}
             onChange={this.handleChangeBio}
           />
           <Form.Button onClick={() => this.handleSubmitForm()}>
