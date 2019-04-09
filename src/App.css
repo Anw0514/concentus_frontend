@@ -54,16 +54,22 @@ i.massive.icon {
   min-height: 80vh;
 }
 
+.login.container {
+  min-width: 280px !important;
+}
+
 .link {
   color: rgba(0, 172, 163, 1);
 }
 
+.link:hover {
+  color: rgb(0, 112, 107);
+}
+
 .login.field {
-  margin-right: 5%;
-  margin-left: 5%;
   margin-bottom: 10px;
   margin-top: 10px;
-  width: 90%
+  width: 100%
 }
 
 .login.field.button {

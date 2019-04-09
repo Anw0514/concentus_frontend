@@ -21,7 +21,9 @@ class App extends Component {
       discoverPages: [],
       bookings: [],
       selectedPage: {},
-      user: {}
+      user: {},
+      loginFailed: false,
+      loggedIn: false
     }
   }
 
@@ -84,7 +86,26 @@ class App extends Component {
   }
 
   handleLogin = (email, password) => {
-    // fetch("http://localhost:3000/login");
+    fetch("http://localhost:3000/login", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    })
+    .then(resp => resp.json()).then(user => {
+      if (user.message) {
+        this.setState({
+          loginFailed: true
+        })
+      } else {
+        this.setState({
+          user
+        })
+      }
+    })
+    // .then(resp => resp.json())
   }
 
   render() {
@@ -112,7 +133,7 @@ class App extends Component {
             <Route
               exact
               path="/login"
-              render={() => <Login handleLogin={this.handleLogin} />}
+              render={() => <Login redirect={this.state.loggedIn} error={this.state.loginFailed} handleLogin={this.handleLogin} />}
             />
             <Route
               exact
