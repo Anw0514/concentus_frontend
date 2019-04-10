@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PageCardFront from '../Cards/PageCardFront'
 import PageCardBack from "../Cards/PageCardBack";
 import {Card, Icon} from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 class PageIndex extends Component {
 
@@ -20,6 +20,10 @@ class PageIndex extends Component {
     }
 
     render() {
+        if (this.props.shouldLeave) {
+          return <Redirect to="/create" />;
+        }
+
         return (
             <Card.Group fluid>
               {this.props.pages.map(page => {

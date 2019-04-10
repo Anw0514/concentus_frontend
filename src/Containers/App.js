@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { Component } from 'react';
 import NavBar from '../Navigation/NavBar'
 import Discover from './Discover'
@@ -20,7 +21,7 @@ class App extends Component {
       myPages: [],
       discoverPages: [],
       bookings: [],
-      selectedPage: {},
+      selectedPage: false,
       user: {},
       loginFailed: false,
       loggedIn: false
@@ -101,7 +102,7 @@ class App extends Component {
       .then(page => {
         this.setState({
           myPages: [...newPages, page],
-          selectedPage: {}
+          selectedPage: false
         });
       });
   };
@@ -242,6 +243,7 @@ class App extends Component {
                       removePage={this.handleRemovePage}
                       discover={false}
                       editPage={this.handleEdit}
+                      shouldLeave={this.state.selectedPage}
                     />
                   </div>
                 )
