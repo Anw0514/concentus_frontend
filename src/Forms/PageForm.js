@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Segment, Form } from 'semantic-ui-react';
 import {Redirect} from 'react-router-dom'
+import Tidbit from "../Tiny/Tidbits";
 
 class PageForm extends Component {
   constructor() {
@@ -129,6 +130,7 @@ class PageForm extends Component {
               onChange={this.handleChangeType}
             />
           </Form.Group>
+          <Tidbit />
           <Form.TextArea
             label="Bio"
             placeholder="Tell us more about you..."
