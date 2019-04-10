@@ -84,8 +84,6 @@ class App extends Component {
           checkpage.id + checkpage.model
       );
     });
-    console.log(this)
-    console.log(this.state)
     fetch(`http://localhost:3000/${type}/${this.state.selectedPage.id}`, {
       method: "PATCH",
       headers: {
@@ -102,8 +100,9 @@ class App extends Component {
       .then(resp => resp.json())
       .then(page => {
         this.setState({
-          myPages: [...newPages, page]
-        }, console.log(page));
+          myPages: [...newPages, page],
+          selectedPage: {}
+        });
       });
   };
 
@@ -203,24 +202,32 @@ class App extends Component {
             <Route
               exact
               path="/login"
-              render={() => (
-                <Login
-                  redirect={this.state.loggedIn}
-                  error={this.state.loginFailed}
-                  handleLogin={this.handleLogin}
-                />
-              )}
+              render={() =>
+                this.state.loggedIn ? (
+                  <Redirect to="/myPages" />
+                ) : (
+                  <Login
+                    redirect={this.state.loggedIn}
+                    error={this.state.loginFailed}
+                    handleLogin={this.handleLogin}
+                  />
+                )
+              }
             />
             <Route
               exact
               path="/register"
-              render={() => (
-                <SignUp
-                  redirect={this.state.loggedIn}
-                  error={this.state.registerFailed}
-                  handleRegister={this.handleRegister}
-                />
-              )}
+              render={() =>
+                this.state.loggedIn ? (
+                  <Redirect to="/discover" />
+                ) : (
+                  <SignUp
+                    redirect={this.state.loggedIn}
+                    error={this.state.registerFailed}
+                    handleRegister={this.handleRegister}
+                  />
+                )
+              }
             />
             <Route
               exact
