@@ -78,9 +78,14 @@ class App extends Component {
   };
 
   handleUpdatePage = (type, name, zip, bio, img) => {
-    const newPages = this.state.myPages.filter(
-      checkpage => this.state.selectedPage.id !== checkpage.id
-    );
+    const newPages = this.state.myPages.filter(checkpage => {
+      return (
+        this.state.selectedPage.id + this.state.selectedPage.model !==
+          checkpage.id + checkpage.model
+      );
+    });
+    console.log(this)
+    console.log(this.state)
     fetch(`http://localhost:3000/${type}/${this.state.selectedPage.id}`, {
       method: "PATCH",
       headers: {
@@ -89,7 +94,7 @@ class App extends Component {
       body: JSON.stringify({
         name: name,
         zip: zip,
-        user_id: 2,
+        user_id: this.state.user.id,
         bio: bio,
         img: img
       })

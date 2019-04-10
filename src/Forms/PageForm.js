@@ -47,7 +47,7 @@ class PageForm extends Component {
     this.setState({ file: e.target.value });
   };
 
-  handleSubmitForm = () => {
+  handleSubmitForm = (e) => {
     // !!! change user id to be fluid
     if (this.props.page.model) {
       this.props.updatePage(
@@ -134,7 +134,7 @@ class PageForm extends Component {
             value={this.state.bio}
             onChange={this.handleChangeBio}
           />
-          <Form.Button onClick={() => this.handleSubmitForm()}>
+          <Form.Button onClick={this.handleSubmitForm}>
             Submit
           </Form.Button>
         </Form>
