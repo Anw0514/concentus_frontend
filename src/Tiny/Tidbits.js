@@ -9,7 +9,7 @@ class Tidbit extends Component {
           skillList: [],
           linkList: [],
           genreList: [],
-          lookingList: [],
+          lookingList: []
         };
     }
 
@@ -30,7 +30,7 @@ class Tidbit extends Component {
 
     objectifyTidbits(tidArr) {
         return tidArr.map(tid => {
-            return { key: tid.value, text: tid.value, value: tid.id };
+            return { key: tid.id, text: tid.value, value: tid.id };
         })
     }
 
@@ -46,13 +46,28 @@ class Tidbit extends Component {
             })
         }).then(resp => resp.json())
         .then(tidbit => {
-            if (this.state[group + 'List'].length !== 0) {
-                this.setState({
-                    [group + 'List']: [{ key: tidbit.value, text: tidbit.value, value: tidbit.id }, ...this.state[group + 'List']]
-                })
+            let name = group + 'List'
+            if (group === 'looking for'){
+                name = 'lookingList'
+            }
+            let alt_name = name.substr(0, name.length - 4) + 's'
+            if (this.state[name].length !== 0) {
+                this.setState(
+                  {
+                    [name]: [
+                      {
+                        key: tidbit.value,
+                        text: tidbit.value,
+                        value: tidbit.id
+                      },
+                      ...this.state[name]
+                    ]
+                  },
+                  this.props.add(this.props[alt_name].concat([tidbit.id]), alt_name)
+                );
             } else {
                 this.setState({
-                  [group + "List"]: [
+                  [name]: [
                     {
                       key: tidbit.value,
                       text: tidbit.value,
@@ -79,7 +94,9 @@ class Tidbit extends Component {
               clearable
               multiple
               allowAdditions
+              value={this.props.skills}
               onAddItem={(e, {value}) => this.addEntry(value, 'skill')}
+              onChange={(e, { value }) => this.props.add(value, 'skills')}
               additionLabel='Add Skill: '
             />
             <label className='tidbit label'>Genres</label>
@@ -92,7 +109,9 @@ class Tidbit extends Component {
               clearable
               multiple
               allowAdditions
+              value={this.props.genres}
               onAddItem={(e, {value}) => this.addEntry(value, 'genre')}
+              onChange={(e, { value }) => this.props.add(value, 'genres')}
               additionLabel='Add Genre: '
             />
             <label className='tidbit label'>Discovery</label>
@@ -105,7 +124,9 @@ class Tidbit extends Component {
               clearable
               multiple
               allowAdditions
+              value={this.props.lookings}
               onAddItem={(e, {value}) => this.addEntry(value, 'looking for')}
+              onChange={(e, { value }) => this.props.add(value, 'lookings')}
               additionLabel='Add: '
             />
             <label className='tidbit label'>Links</label>
@@ -119,7 +140,9 @@ class Tidbit extends Component {
               multiple
               noResultsMessage={null}
               allowAdditions
+              value={this.props.links}
               onAddItem={(e, {value}) => this.addEntry(value, 'link')}
+              onChange={(e, { value }) => this.props.add(value, 'links')}
               additionLabel='Add Link: '
             />
           </Container>

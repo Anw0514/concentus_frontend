@@ -6,7 +6,7 @@ class PageCardFront extends Component {
     // gets props page, toBack
     render() {
         return (
-          <Card>
+          <Card fluid>
             <Card.Content>
               <Card.Header>{this.props.page.name}</Card.Header>
               <Card.Meta>{this.props.page.model}</Card.Meta>

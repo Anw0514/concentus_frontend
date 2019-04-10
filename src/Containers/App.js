@@ -237,7 +237,7 @@ class App extends Component {
                 !this.state.loggedIn ? (
                   <Redirect to="/login" />
                 ) : (
-                  <div className="pageDiv">
+                  <div className="wide pageDiv">
                     <PageIndex
                       pages={this.state.myPages}
                       removePage={this.handleRemovePage}

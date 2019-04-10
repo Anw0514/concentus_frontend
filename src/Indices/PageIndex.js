@@ -25,7 +25,7 @@ class PageIndex extends Component {
         }
 
         return (
-            <Card.Group fluid>
+            <Card.Group itemsPerRow={4} className='card-container'>
               {this.props.pages.map(page => {
                 return page === this.state.pageBack ? (
                   <PageCardBack

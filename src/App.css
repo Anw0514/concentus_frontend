@@ -31,15 +31,16 @@
   margin-right: 10vw;
 }
 
+.wide.pageDiv {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
 .pageDiv {
   margin-top: 20px;
   justify-content: center;
   margin-left: 10vw;
   margin-right: 10vw;
-}
-
-.ui.cards {
-  align-self: center;
 }
 
 i.massive.icon {

@@ -52,6 +52,15 @@ class PageForm extends Component {
     this.setState({ file: e.target.value });
   };
 
+  addTidbit = (value, group) => {
+    if (typeof value[value.length - 1] !== 'string'){
+      this.setState({
+        [group]: value
+      })
+    }
+    console.log(value, group)
+  }
+
   handleSubmitForm = (e) => {
     // !!! change user id to be fluid
     if (this.props.page.model) {
@@ -137,10 +146,10 @@ class PageForm extends Component {
           <Divider />
           <Tidbit
             add={this.addTidbit}
-            skillChange={this.handleChangeSkill}
-            lookingChange={this.handleChangeLooking}
-            genreChange={this.handleChangeGenre}
-            linkChange={this.handleChangelink}
+            skills={this.state.skills}
+            links={this.state.links}
+            genres={this.state.genres}
+            lookings={this.state.lookings}
             type={this.state.type}
           />
           <Divider />
