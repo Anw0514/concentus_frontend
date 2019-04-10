@@ -66,6 +66,7 @@ class PageForm extends Component {
         this.state.file
       );
     }
+    // !!! fix the bug that makes it not hit the redirect on the first click
     this.setState({
       redirect: true
     });
