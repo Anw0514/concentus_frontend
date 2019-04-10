@@ -12,6 +12,15 @@
   padding-right: 10px;
 }
 
+label {
+  color: black;
+  font-weight: 700;
+}
+
+.ui.fluid.multiple.search.selection.dropdown {
+  margin-bottom: 1rem;
+}
+
 .ui.segment.form {
   margin-left: 10vw;
   margin-right: 10vw;

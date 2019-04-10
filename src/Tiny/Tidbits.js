@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Segment, Message, Dropdown, Input } from "semantic-ui-react";
+import { Container, Message, Dropdown, Input, Label } from "semantic-ui-react";
 
 class Tidbit extends Component {
 
@@ -19,19 +19,53 @@ class Tidbit extends Component {
             { key: 'Chinese', text: 'Chinese', value: 'Chinese' },
         ]
         return (
-            <Segment>
-                <Dropdown
-                    options={options}
-                    placeholder='Choose Language'
-                    search
-                    selection
-                    fluid
-                    clearable
-                    multiple
-                    allowAdditions
-                />
-            </Segment>
-        )
+          <Container>
+            <label>Skills</label>
+            <Dropdown
+              options={options}
+              placeholder="Choose or Add Skills"
+              search
+              selection
+              fluid
+              clearable
+              multiple
+              allowAdditions
+            />
+            <label>Genres</label>
+            <Dropdown
+              options={options}
+              placeholder="Choose or Add Genres"
+              search
+              selection
+              fluid
+              clearable
+              multiple
+              allowAdditions
+            />
+            <label>Discovery</label>
+            <Dropdown
+              options={options}
+              placeholder="Choose or Add Who You're Looking For"
+              search
+              selection
+              fluid
+              clearable
+              multiple
+              allowAdditions
+            />
+            <label>Links</label>
+            <Dropdown
+              options={options}
+              placeholder="Add Links"
+              search
+              selection
+              fluid
+              clearable
+              multiple
+              allowAdditions
+            />
+          </Container>
+        );
     }
 }
 
