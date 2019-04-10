@@ -19,8 +19,8 @@ class Tidbit extends Component {
             { key: 'Chinese', text: 'Chinese', value: 'Chinese' },
         ]
         return (
-          <Container>
-            <label>Skills</label>
+          <Container className='tidbit container'>
+            <label className='tidbit label'>Skills</label>
             <Dropdown
               options={options}
               placeholder="Choose or Add Skills"
@@ -31,7 +31,7 @@ class Tidbit extends Component {
               multiple
               allowAdditions
             />
-            <label>Genres</label>
+            <label className='tidbit label'>Genres</label>
             <Dropdown
               options={options}
               placeholder="Choose or Add Genres"
@@ -42,7 +42,7 @@ class Tidbit extends Component {
               multiple
               allowAdditions
             />
-            <label>Discovery</label>
+            <label className='tidbit label'>Discovery</label>
             <Dropdown
               options={options}
               placeholder="Choose or Add Who You're Looking For"
@@ -53,7 +53,7 @@ class Tidbit extends Component {
               multiple
               allowAdditions
             />
-            <label>Links</label>
+            <label className='tidbit label'>Links</label>
             <Dropdown
               options={options}
               placeholder="Add Links"
