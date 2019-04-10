@@ -12,7 +12,11 @@ class PageForm extends Component {
       type: "",
       bio: "",
       file: "",
-      redirect: false
+      redirect: false,
+      skills: [],
+      links: [],
+      lookings: [],
+      genres: []
     };
   }
 
@@ -131,7 +135,14 @@ class PageForm extends Component {
             />
           </Form.Group>
           <Divider />
-            <Tidbit />
+          <Tidbit
+            add={this.addTidbit}
+            skillChange={this.handleChangeSkill}
+            lookingChange={this.handleChangeLooking}
+            genreChange={this.handleChangeGenre}
+            linkChange={this.handleChangelink}
+            type={this.state.type}
+          />
           <Divider />
           <Form.TextArea
             label="Bio"
@@ -139,9 +150,7 @@ class PageForm extends Component {
             value={this.state.bio}
             onChange={this.handleChangeBio}
           />
-          <Form.Button onClick={this.handleSubmitForm}>
-            Submit
-          </Form.Button>
+          <Form.Button onClick={this.handleSubmitForm}>Submit</Form.Button>
         </Form>
       </Segment>
     );
