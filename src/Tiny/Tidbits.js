@@ -74,7 +74,7 @@ class Tidbit extends Component {
                       value: tidbit.id
                     }
                   ]
-                });
+                }, this.props.add(this.props[alt_name].concat([tidbit.id]), alt_name));
             }
         })
 
