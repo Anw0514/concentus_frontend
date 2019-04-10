@@ -52,6 +52,43 @@ class PageForm extends Component {
     this.setState({ file: e.target.value });
   };
 
+  addTidbit = (tidbit) => {
+    let name = tidbit.group + "s";
+    if (tidbit.group === 'looking for') {
+      name = 'lookings'
+    }
+    console.log(tidbit)
+    if (this.state[name] && this.state[name].length !== 0) {
+      this.setState({
+        [name]: [tidbit, ...this.state[name]]
+      })
+    } else if (this.state[name]){
+      this.setState({
+        [name]: [tidbit]
+      });
+    }
+  }
+
+  removeTidbit = (name, group) => {
+    if (group === 'Skills') {
+      this.setState({
+        skills: this.state.skills.filter(skill => skill.value !== name)
+      })
+    } else if (group === 'Genres') {
+      this.setState({
+        genres: this.state.genres.filter(genre => genre.value !== name)
+      });
+    } else if (group === 'Discovery') {
+      this.setState({
+        links: this.state.links.filter(link => link.value !== name)
+      });
+    } else if (group === 'Links') {
+      this.setState({
+        lookings: this.state.lookings.filter(looking => looking.value !== name)
+      });
+    }
+  }
+
   handleSubmitForm = (e) => {
     // !!! change user id to be fluid
     if (this.props.page.model) {
@@ -137,11 +174,12 @@ class PageForm extends Component {
           <Divider />
           <Tidbit
             add={this.addTidbit}
-            skillChange={this.handleChangeSkill}
-            lookingChange={this.handleChangeLooking}
-            genreChange={this.handleChangeGenre}
-            linkChange={this.handleChangelink}
+            remove={this.removeTidbit}
             type={this.state.type}
+            skills={this.state.skills}
+            lookings={this.state.lookings}
+            genres={this.state.genres}
+            links={this.state.links}
           />
           <Divider />
           <Form.TextArea
