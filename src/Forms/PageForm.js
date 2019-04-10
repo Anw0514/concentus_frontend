@@ -109,7 +109,7 @@ class PageForm extends Component {
             />
           </Form.Group>
           <Form.Group inline>
-            <label>Size</label>
+            <label>Type</label>
             <Form.Radio
               label="Musician"
               value="musicians"
