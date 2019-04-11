@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom'
 import Tidbit from "../Tiny/Tidbits";
 
 class PageForm extends Component {
+  // !!! add vlidations to make sure all fields are correct and male last name optional
   constructor() {
     super();
     this.state = {

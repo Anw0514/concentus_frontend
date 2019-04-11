@@ -21,7 +21,7 @@ class NavBar extends Component {
             <Dropdown item icon="big user circle" simple>
               <Dropdown.Menu>
                 {user.name ? (
-                  <Dropdown.Item active={false} onClick={() => {}}>
+                  <Dropdown.Item active={false}>
                     <Icon name="user circle" />
                     Hi, {user.name}!
                   </Dropdown.Item>
