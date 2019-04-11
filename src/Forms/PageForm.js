@@ -164,6 +164,10 @@ class PageForm extends Component {
             genres={this.state.genres}
             lookings={this.state.lookings}
             type={this.state.type}
+            skills={this.state.skills}
+            lookings={this.state.lookings}
+            genres={this.state.genres}
+            links={this.state.links}
           />
           <Divider />
           <Form.TextArea
