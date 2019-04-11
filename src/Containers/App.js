@@ -166,11 +166,15 @@ class App extends Component {
       });
   };
 
+  handleLogout = () => {
+    
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <NavBar />
+          <NavBar user={this.state.user} leave={this.handleLogout} />
           <Switch>
             <Route
               exact
