@@ -167,7 +167,11 @@ class App extends Component {
   };
 
   handleLogout = () => {
-    
+    this.setState({
+      loggedIn: false,
+      user: {},
+      loginFailed: false
+    })
   }
 
   render() {

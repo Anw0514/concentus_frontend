@@ -4,13 +4,6 @@ import { Link, BrowserRouter as Router, Redirect, NavLink } from 'react-router-d
 
 class NavBar extends Component {
 
-  constructor(){
-    super()
-    this.state = {
-      discoverActive: false
-    }
-  }
-
   render() {
     const { user, leave } = this.props
     return (
@@ -27,12 +20,12 @@ class NavBar extends Component {
             </Menu.Item>
             <Dropdown item icon="big user circle" simple>
               <Dropdown.Menu>
-                {user.name ? 
-                <Dropdown.Item active={false} onClick={() => { }}>
+                {user.name ? (
+                  <Dropdown.Item active={false} onClick={() => {}}>
                     <Icon name="user circle" />
                     Hi, {user.name}!
-                </Dropdown.Item> : null
-                }
+                  </Dropdown.Item>
+                ) : null}
                 <Dropdown.Item active={false} onClick={() => {}}>
                   <NavLink to="/mypages">
                     <Icon name="list alternate outline" />
@@ -57,6 +50,12 @@ class NavBar extends Component {
                   <Icon name="calendar check outline" />
                   Gigs
                 </Dropdown.Item>
+                {user.name ? (
+                  <Dropdown.Item active={false} onClick={leave}>
+                    <Icon name="log out" />
+                    Log Out
+                  </Dropdown.Item>
+                ) : null}
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Menu>
