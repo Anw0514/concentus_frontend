@@ -30,8 +30,6 @@ class App extends Component {
 
   handleNewPage = (type, name, zip, bio, img, tidbits, address) => {
     // adds a new page after it has been posted to the database by PageForm
-
-    // debugger
     
     fetch(`http://localhost:3000/${type}`, {
       method: "POST",
