@@ -5,7 +5,7 @@ class PageCardBack extends Component {
 
     render() {
         return (
-          <Card>
+          <Card fluid color="teal">
             <Card.Content>
               <Card.Header>{this.props.page.name}</Card.Header>
               <Card.Meta>{this.props.page.model}</Card.Meta>
@@ -26,7 +26,10 @@ class PageCardBack extends Component {
                 basic
                 color="teal"
                 content="Delete"
-                onClick={() => {console.log(this); this.props.removePage(this.props.page)}}
+                onClick={() => {
+                  console.log(this);
+                  this.props.removePage(this.props.page);
+                }}
               />
             </Card.Content>
           </Card>

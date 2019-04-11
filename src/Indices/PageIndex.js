@@ -25,38 +25,30 @@ class PageIndex extends Component {
         }
 
         return (
-            <Card.Group itemsPerRow={4} className='card-container'>
-              {this.props.pages.map(page => {
-                return page === this.state.pageBack ? (
-                  <PageCardBack
-                    page={this.state.pageBack}
-                    toBack={this.handleToBack}
-                    removePage={this.props.removePage}
-                    editPage={this.props.editPage}
-                  />
-                ) : (
-                  <PageCardFront
-                    page={page}
-                    toBack={this.handleToBack}
-                  />
-                );
-              })}
-              {
-                this.props.discover ? null :
-                <Card color="teal">
-                  <Card.Content>
-                    <Card.Header>Add A Page</Card.Header>
-                    <Link to="/create">
-                    <Icon
-                      name="plus"
-                      size="massive"
-                      color="teal"
-                    />
-                    </Link>
-                  </Card.Content>
-                </Card>
-              }
-            </Card.Group>
+          <Card.Group itemsPerRow={4} className="card-container">
+            {this.props.pages.map(page => {
+              return page === this.state.pageBack ? (
+                <PageCardBack
+                  page={this.state.pageBack}
+                  toBack={this.handleToBack}
+                  removePage={this.props.removePage}
+                  editPage={this.props.editPage}
+                />
+              ) : (
+                <PageCardFront page={page} toBack={this.handleToBack} />
+              );
+            })}
+            {this.props.discover ? null : (
+              <Card fluid color="teal">
+                <Card.Content>
+                  <Card.Header>Add A Page</Card.Header>
+                  <Link to="/create">
+                    <Icon name="plus" size="massive" color="teal" />
+                  </Link>
+                </Card.Content>
+              </Card>
+            )}
+          </Card.Group>
         );
     }
 }
