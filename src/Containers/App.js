@@ -28,20 +28,24 @@ class App extends Component {
     };
   }
 
-  handleNewPage = (type, name, zip, bio, img) => {
+  handleNewPage = (type, name, zip, bio, img, tidbits, address) => {
     // adds a new page after it has been posted to the database by PageForm
 
+    // debugger
+    
     fetch(`http://localhost:3000/${type}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name: name,
-        zip: zip,
-        user_id: 2,
-        bio: bio,
-        img: img
+        name,
+        zip,
+        user_id: this.state.user.id,
+        bio,
+        img,
+        address,
+        tidbits
       })
     })
       .then(resp => resp.json())

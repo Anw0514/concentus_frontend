@@ -62,22 +62,30 @@ class PageForm extends Component {
   }
 
   handleSubmitForm = (e) => {
+    const { type, name, zip, bio, file, links, lookings, genres, skills } = this.state
+
     // !!! change user id to be fluid
+    const tidbits = skills.concat(links, lookings, genres)
+
+    // debugger
+
     if (this.props.page.model) {
       this.props.updatePage(
-        this.state.type,
-        this.state.name,
-        this.state.zip,
-        this.state.bio,
-        this.state.file
+        type,
+        name,
+        zip,
+        bio,
+        file,
+        tidbits
       );
     } else {
       this.props.addPage(
-        this.state.type,
-        this.state.name,
-        this.state.zip,
-        this.state.bio,
-        this.state.file
+        type,
+        name,
+        zip,
+        bio,
+        file,
+        tidbits
       );
     }
     // !!! fix the bug that makes it not hit the redirect on the first click
