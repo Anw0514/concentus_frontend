@@ -12,12 +12,14 @@ class Login extends Component {
   }
 
   handleEmailChange = (e, { value }) => {
+    // changes value of email input
     this.setState({
       email: value
     });
   };
 
   handlePasswordChange = (e, { value }) => {
+    // changes value of password input
     this.setState({
       password: value
     });

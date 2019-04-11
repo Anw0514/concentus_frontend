@@ -14,6 +14,7 @@ class PageIndex extends Component {
     }
 
     handleToBack = (page) => {
+      // changes card rendered to be front/back
         this.setState({
             pageBack: page
         })

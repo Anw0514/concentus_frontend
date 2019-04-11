@@ -21,6 +21,7 @@ class PageForm extends Component {
   }
 
   componentDidMount(){
+    // checks to see if there is a page passed to decide if the form will be for edit or create
     if (this.props.page.model) {
       const page = this.props.page
       this.setState({
@@ -33,41 +34,44 @@ class PageForm extends Component {
   }
 
   handleChangeName = (e, { value }) => {
+    // changes name input value
     this.setState({ name: value });
   };
 
   handleChangeBio = (e, { value }) => {
+    // changes bio input value
     this.setState({ bio: value });
   };
 
   handleChangeZip = e => {
+    // changes zip code input value
     this.setState({ zip: parseInt(e.target.value) });
   };
 
   handleChangeType = (e, { value }) => {
+    // changes type selection value
     this.setState({ type: value });
   };
 
   handleChangeFile = (e) => {
+    // changes file selection value
     this.setState({ file: e.target.value });
   };
 
   addTidbit = (value, group) => {
+    // callback for Tidbit that changes the value of the input dropdowns on change
     if (typeof value[value.length - 1] !== 'string'){
       this.setState({
         [group]: value
       })
     }
-    console.log(value, group)
   }
 
   handleSubmitForm = (e) => {
+    // calls the parent function to fetch and redirects to /mypages
     const { type, name, zip, bio, file, links, lookings, genres, skills } = this.state
 
-    // !!! change user id to be fluid
     const tidbits = skills.concat(links, lookings, genres)
-
-    // debugger
 
     if (this.props.page.model) {
       this.props.updatePage(

@@ -11,12 +11,6 @@ class NavBar extends Component {
     }
   }
 
-  handleClick(){
-    this.setState({
-      discoverActive: true
-    })
-  }
-
   render() {
     return (
       <div>

@@ -3,7 +3,6 @@ import Data from '../Tiny/Data'
 import { Button, Card, Placeholder } from 'semantic-ui-react'
 
 class PageCardFront extends Component {
-    // gets props page, toBack
     render() {
         return (
           <Card fluid color="teal">

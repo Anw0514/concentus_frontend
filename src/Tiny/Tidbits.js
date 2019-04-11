@@ -14,6 +14,7 @@ class Tidbit extends Component {
     }
 
     componentDidMount() {
+      // fetches all existing tidbits from the database and sets the options for the dropdown inputs accordingly
         fetch("http://localhost:3000/tidbits")
           .then(resp => resp.json())
           .then(tidbits => {
@@ -29,14 +30,14 @@ class Tidbit extends Component {
     }
 
     objectifyTidbits(tidArr) {
+      // turns the tidbits into the right format to be set as options for input dropdowns
         return tidArr.map(tid => {
             return { key: tid.id, text: tid.value, value: tid.id };
         })
     }
 
     addEntry = (value, group) => {
-        // add entry to the state and post to the backend
-
+      // adds entry to the options for that group's input and posts to the backend
         fetch("http://localhost:3000/tidbits", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },

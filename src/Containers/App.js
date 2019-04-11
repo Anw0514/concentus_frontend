@@ -75,12 +75,14 @@ class App extends Component {
   };
 
   handleEdit = page => {
+    // cllback for /mypages when soemone clicks the edit button on a page
     this.setState({
       selectedPage: page
     });
   };
 
   handleUpdatePage = (type, name, zip, bio, img) => {
+    // callback for /pageform when it is submitted and it's updating an existing page
     const newPages = this.state.myPages.filter(checkpage => {
       return (
         this.state.selectedPage.id + this.state.selectedPage.model !==
@@ -110,6 +112,7 @@ class App extends Component {
   };
 
   handleLogin = (email, password) => {
+    // authenticaes a login attempt and sets the state accordingly
     fetch("http://localhost:3000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -137,15 +140,8 @@ class App extends Component {
       });
   };
 
-  handleRegister = ({
-    email,
-    domain,
-    password,
-    name,
-    zip,
-    distance,
-    distanceType
-  }) => {
+  handleRegister = ({ email, domain, password, name, zip, distance, distanceType }) => {
+    // creates a new user in the backend and logs them in
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
