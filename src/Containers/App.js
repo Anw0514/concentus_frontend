@@ -167,6 +167,7 @@ class App extends Component {
   };
 
   handleLogout = () => {
+    // callback for navbar to allow a logout
     this.setState({
       loggedIn: false,
       user: {},
