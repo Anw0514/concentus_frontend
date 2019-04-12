@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Segment, Message, Dropdown, Input } from "semantic-ui-react";
 
 class RegistrationEnd extends Component {
-  // !!! add first and last name fields, make last optional
+  // !!! add name field
     render() {
         return (
           <Segment className="login container">
