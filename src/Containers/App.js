@@ -24,13 +24,14 @@ class App extends Component {
       selectedPage: false,
       user: {},
       loginFailed: false,
-      loggedIn: false
+      loggedIn: false,
+      formDone: false
     };
   }
 
   handleNewPage = (type, name, zip, bio, img, tidbits, address) => {
     // adds a new page after it has been posted to the database by PageForm
-    
+
     fetch(`http://localhost:3000/${type}`, {
       method: "POST",
       headers: {
@@ -49,8 +50,9 @@ class App extends Component {
       .then(resp => resp.json())
       .then(page => {
         this.setState({
-          myPages: [...this.state.myPages, page]
-        });
+          myPages: [...this.state.myPages, page],
+          formDone: true
+        },  () => setTimeout(this.setState({ formDone: false }), 1000));
       });
   };
 
@@ -81,12 +83,12 @@ class App extends Component {
     });
   };
 
-  handleUpdatePage = (type, name, zip, bio, img) => {
+  handleUpdatePage = (type, name, zip, bio, img, tidbits, address) => {
     // callback for /pageform when it is submitted and it's updating an existing page
     const newPages = this.state.myPages.filter(checkpage => {
       return (
         this.state.selectedPage.id + this.state.selectedPage.model !==
-          checkpage.id + checkpage.model
+        checkpage.id + checkpage.model
       );
     });
     fetch(`http://localhost:3000/${type}/${this.state.selectedPage.id}`, {
@@ -95,19 +97,22 @@ class App extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name: name,
-        zip: zip,
+        name,
+        zip,
         user_id: this.state.user.id,
-        bio: bio,
-        img: img
+        bio,
+        img,
+        address,
+        tidbits
       })
     })
       .then(resp => resp.json())
       .then(page => {
         this.setState({
           myPages: [...newPages, page],
-          selectedPage: false
-        });
+          selectedPage: false,
+          formDone: true
+        }, () => setTimeout(this.setState({ formDone: false }), 1000));
       });
   };
 
@@ -128,7 +133,7 @@ class App extends Component {
             loginFailed: true
           });
         } else {
-          const user = jsonResp.user
+          const user = jsonResp.user;
           this.setState({
             user,
             myPages: user.my_pages,
@@ -140,7 +145,15 @@ class App extends Component {
       });
   };
 
-  handleRegister = ({ email, domain, password, name, zip, distance, distanceType }) => {
+  handleRegister = ({
+    email,
+    domain,
+    password,
+    name,
+    zip,
+    distance,
+    distanceType
+  }) => {
     // creates a new user in the backend and logs them in
     fetch("http://localhost:3000/users", {
       method: "POST",
@@ -172,8 +185,8 @@ class App extends Component {
       loggedIn: false,
       user: {},
       loginFailed: false
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -203,6 +216,7 @@ class App extends Component {
                     page={this.state.selectedPage}
                     addPage={this.handleNewPage}
                     updatePage={this.handleUpdatePage}
+                    redirect={this.state.formDone}
                   />
                 )
               }

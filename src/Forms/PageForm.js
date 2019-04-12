@@ -13,6 +13,7 @@ class PageForm extends Component {
       type: "",
       bio: "",
       file: "",
+      address: '',
       redirect: false,
       skills: [],
       links: [],
@@ -70,7 +71,7 @@ class PageForm extends Component {
 
   handleSubmitForm = (e) => {
     // calls the parent function to fetch and redirects to /mypages
-    const { type, name, zip, bio, file, links, lookings, genres, skills } = this.state
+    const { type, name, zip, bio, file, links, lookings, genres, skills, address } = this.state
 
     const tidbits = skills.concat(links, lookings, genres)
 
@@ -81,7 +82,8 @@ class PageForm extends Component {
         zip,
         bio,
         file,
-        tidbits
+        tidbits,
+        address
       );
     } else {
       this.props.addPage(
@@ -90,17 +92,14 @@ class PageForm extends Component {
         zip,
         bio,
         file,
-        tidbits
+        tidbits,
+        address
       );
     }
-    // !!! fix the bug that makes it not hit the redirect on the first click
-    this.setState({
-      redirect: true
-    });
   };
 
   render() {
-    if (this.state.redirect) {
+    if (this.props.redirect) {
       return <Redirect to="/mypages" />;
     }
 
