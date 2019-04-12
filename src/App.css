@@ -22,6 +22,22 @@
   font-weight: 700;
 }
 
+.ui.teal.label {
+  margin: 5px !important;
+  margin-left: 10px !important;
+}
+
+.tag-holder {
+  margin-bottom: .5em;
+  text-align: left;
+}
+
+.tag-holder > .ui.left.floated.header {
+  align-self: center;
+  height: 25.97px;
+  margin: 5px;
+}
+
 .ui.fluid.multiple.search.selection.dropdown {
   margin-bottom: 1rem;
 }

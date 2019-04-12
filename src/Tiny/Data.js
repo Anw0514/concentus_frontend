@@ -10,31 +10,29 @@ class Data extends Component {
         return (
           <div>
             {genres && genres[0] ? 
-            <Container>
+            <Container className='tag-holder'>
                 <Header as="h4" floated="left">Genres: </Header>
                 <Tidbit collection={genres} />
             </Container>
             : null}
-            <br />
             {skills && skills[0] ? 
-            <Container>
+            <Container className='tag-holder'>
                 <Header as="h4" floated="left">Skills: </Header>
                 <Tidbit collection={skills} />
             </Container>
             : null}
             {lookings && lookings[0] ? 
-            <Container>
+            <Container className='tag-holder'>
                 <Header as="h4" floated="left">Looking For: </Header>
                 <Tidbit collection={lookings} />
             </Container>
             : null}
             {links && links[0] ? 
-            <Container>
+            <Container className='tag-holder'>
                 <Header as="h4" floated="left">Links: </Header>
                 <Tidbit collection={links} />
             </Container>
             : null}
-            
           </div>
         );
     }
