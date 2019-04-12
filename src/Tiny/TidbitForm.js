@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Container, Dropdown} from "semantic-ui-react";
 
 class TidbitForm extends Component {
@@ -96,8 +96,10 @@ class TidbitForm extends Component {
 
     render() {
         const { skillList, linkList, genreList, lookingList } = this.state
+        const type = this.props.type
         return (
           <Container className='tidbit container'>
+            {type === 'musicians' ? <Fragment>
             <label className='tidbit label'>Skills</label>
             <Dropdown
               options={skillList}
@@ -112,7 +114,7 @@ class TidbitForm extends Component {
               onAddItem={(e, {value}) => this.addEntry(value, 'skill')}
               onChange={(e, { value }) => this.props.add(value, 'skills')}
               additionLabel='Add Skill: '
-            />
+              /></Fragment> : null }
             <label className='tidbit label'>Genres</label>
             <Dropdown
               options={genreList}

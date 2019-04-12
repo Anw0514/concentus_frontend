@@ -14,7 +14,10 @@ class PageCardFront extends Component {
               </Placeholder>
               <Data
                 page={this.props.page}
-                lookings={this.props.page.lookings}
+                lookings={this.props.page.looking_for}
+                links={this.props.page.links}
+                genres={this.props.page.genres}
+                skills={this.props.page.skills}
               />
               <br />
               <Button

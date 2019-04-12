@@ -13,6 +13,7 @@ class PageCardBack extends Component {
               <Card.Description>{this.props.page.bio}</Card.Description>
               <Data
                 page={this.props.page}
+                lookings={this.props.page.looking_for}
                 links={this.props.page.links}
                 genres={this.props.page.genres}
                 skills={this.props.page.skills}
