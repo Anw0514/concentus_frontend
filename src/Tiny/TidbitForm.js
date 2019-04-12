@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Message, Dropdown, Input, Label } from "semantic-ui-react";
+import { Container, Dropdown} from "semantic-ui-react";
 
 class TidbitForm extends Component {
 

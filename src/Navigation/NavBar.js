@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Dropdown, Icon, Menu } from "semantic-ui-react";
-import { Link, BrowserRouter as Router, Redirect, NavLink } from 'react-router-dom'
+import { BrowserRouter as NavLink } from 'react-router-dom'
 
 class NavBar extends Component {
 
