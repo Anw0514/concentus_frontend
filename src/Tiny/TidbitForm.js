@@ -24,7 +24,8 @@ class TidbitForm extends Component {
               this.setState({
                   skillList,
                   genreList,
-                  lookingList
+                  lookingList,
+                  linkList: this.props.linkList
               })
           });
     }
@@ -57,7 +58,7 @@ class TidbitForm extends Component {
                   {
                     [name]: [
                       {
-                        key: tidbit.value,
+                        key: tidbit.id,
                         text: tidbit.value,
                         value: tidbit.id
                       },
@@ -72,7 +73,7 @@ class TidbitForm extends Component {
                     {
                       key: tidbit.id,
                       text: tidbit.value,
-                      value: tidbit
+                      value: tidbit.id
                     },
                     ...this.state[group + "List"]
                   ]

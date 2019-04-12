@@ -18,19 +18,33 @@ class PageForm extends Component {
       skills: [],
       links: [],
       lookings: [],
-      genres: []
+      genres: [],
+      linkList: []
     };
   }
 
   componentDidMount(){
     // checks to see if there is a page passed to decide if the form will be for edit or create
-    if (this.props.page.model) {
-      const page = this.props.page
+    const page = this.props.page
+    if (page.model) {
+      let skills = []
+      if (page.model === 'Musician') {
+        skills = page.skills.map(skill => skill.id)
+      }
+      let links = page.links.map(link => link.id);
+      let linkList = page.links.map(link => ({ key: link.id, text: link.value, value: link.id}))
+      let genres = page.genres.map(genre => genre.id);
+      let lookings = page.looking_for.map(looking => looking.id);
       this.setState({
         name: page.name,
         zip: page.zip,
         type: page.model.toLowerCase() + 's',
-        bio: page.bio
+        bio: page.bio,
+        skills,
+        links,
+        lookings,
+        genres,
+        linkList
       })
     }
   }
@@ -163,6 +177,7 @@ class PageForm extends Component {
             genres={this.state.genres}
             lookings={this.state.lookings}
             type={this.state.type}
+            linkList={this.state.linkList}
           />
           <Divider />
           <Form.TextArea
