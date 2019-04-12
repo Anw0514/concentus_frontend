@@ -32,11 +32,7 @@ class Tidbit extends Component {
     objectifyTidbits(tidArr) {
       // turns the tidbits into the right format to be set as options for input dropdowns
         return tidArr.map(tid => {
-<<<<<<< HEAD
             return { key: tid.id, text: tid.value, value: tid.id };
-=======
-            return { key: tid.id, text: tid.value, value: tid };
->>>>>>> master
         })
     }
 
@@ -51,7 +47,6 @@ class Tidbit extends Component {
             })
         }).then(resp => resp.json())
         .then(tidbit => {
-<<<<<<< HEAD
             let name = group + 'List'
             if (group === 'looking for'){
                 name = 'lookingList'
@@ -74,11 +69,6 @@ class Tidbit extends Component {
             } else {
                 this.setState({
                   [name]: [
-=======
-            if (this.state[group + 'List'].length !== 0) {
-                this.setState({
-                  [group + "List"]: [
->>>>>>> master
                     {
                       key: tidbit.id,
                       text: tidbit.value,
@@ -86,15 +76,7 @@ class Tidbit extends Component {
                     },
                     ...this.state[group + "List"]
                   ]
-<<<<<<< HEAD
                 }, this.props.add(this.props[alt_name].concat([tidbit.id]), alt_name));
-=======
-                });
-            } else {
-                this.setState({
-                  [group + "List"]: [{ key: tidbit.id, text: tidbit.value, value: tidbit }]
-                });
->>>>>>> master
             }
         })
 
@@ -127,10 +109,6 @@ class Tidbit extends Component {
               multiple
               allowAdditions
               value={this.props.skills}
-<<<<<<< HEAD
-=======
-              onChange={this.selectTidbit}
->>>>>>> master
               onAddItem={(e, {value}) => this.addEntry(value, 'skill')}
               onChange={(e, { value }) => this.props.add(value, 'skills')}
               additionLabel='Add Skill: '
