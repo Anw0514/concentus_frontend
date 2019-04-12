@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Segment, Form, Divider } from 'semantic-ui-react';
 import {Redirect} from 'react-router-dom'
-import Tidbit from "../Tiny/Tidbits";
+import TidbitForm from "../Tiny/TidbitForm";
 
 class PageForm extends Component {
   // !!! add vlidations to make sure all fields are correct and male last name optional
@@ -157,7 +157,7 @@ class PageForm extends Component {
             />
           </Form.Group>
           <Divider />
-          <Tidbit
+          <TidbitForm
             add={this.addTidbit}
             skills={this.state.skills}
             links={this.state.links}

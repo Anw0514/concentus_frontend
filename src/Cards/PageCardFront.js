@@ -12,8 +12,17 @@ class PageCardFront extends Component {
               <Placeholder style={{ width: "100%", paddingTop: "70%" }}>
                 <Placeholder.Image />
               </Placeholder>
-              <Data page={this.props.page} /><br/>
-              <Button basic color="teal" content="More Info" onClick={() => this.props.toBack(this.props.page)} />
+              <Data
+                page={this.props.page}
+                lookings={this.props.page.lookings}
+              />
+              <br />
+              <Button
+                basic
+                color="teal"
+                content="More Info"
+                onClick={() => this.props.toBack(this.props.page)}
+              />
             </Card.Content>
           </Card>
         );
