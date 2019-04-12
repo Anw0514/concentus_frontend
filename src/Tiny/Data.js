@@ -10,7 +10,7 @@ class Data extends Component {
                 <Header as="h4" floated="left">Links: </Header>
                 {this.props.page.links.map(link => {
                     return (
-                        <Label as="a" color="teal" tag>
+                        <Label color="teal" tag>
                     {link}
                     </Label>
                 )})}

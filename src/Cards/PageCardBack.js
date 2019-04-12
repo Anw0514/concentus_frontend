@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Button, Card } from 'semantic-ui-react'
 
 class PageCardBack extends Component {
@@ -16,21 +16,24 @@ class PageCardBack extends Component {
                 content="Back To front"
                 onClick={() => this.props.toBack({})}
               />
-              <Button
-                basic
-                color="teal"
-                content="Edit"
-                onClick={() => this.props.editPage(this.props.page)}
-              />
-              <Button
-                basic
-                color="teal"
-                content="Delete"
-                onClick={() => {
-                  console.log(this);
-                  this.props.removePage(this.props.page);
-                }}
-              />
+              {this.props.notMine ? null :
+              <Fragment>
+                <Button
+                  basic
+                  color="teal"
+                  content="Edit"
+                  onClick={() => this.props.editPage(this.props.page)}
+                />
+                <Button
+                  basic
+                  color="teal"
+                  content="Delete"
+                  onClick={() => {
+                    console.log(this);
+                    this.props.removePage(this.props.page);
+                  }}
+                />
+              </Fragment>}
             </Card.Content>
           </Card>
         );
