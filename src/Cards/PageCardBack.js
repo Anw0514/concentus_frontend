@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card, Icon } from 'semantic-ui-react'
 import Data from "../Tiny/Data";
 
 class PageCardBack extends Component {
@@ -17,10 +17,12 @@ class PageCardBack extends Component {
                 genres={this.props.page.genres}
                 skills={this.props.page.skills}
               />
-              <Button
-                basic
+            </Card.Content>
+            <Card.Content extra>
+              <Icon
+                name="arrow alternate circle left outline"
+                size="big"
                 color="teal"
-                content="Back To front"
                 onClick={() => this.props.toBack({})}
               />
               {this.props.notMine ? null : (
