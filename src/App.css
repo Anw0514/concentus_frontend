@@ -47,6 +47,10 @@
   margin-right: 10vw;
 }
 
+.ui.fluid.input>input {
+  width: auto !important;
+}
+
 .wide.pageDiv {
   margin-left: 5vw;
   margin-right: 5vw;

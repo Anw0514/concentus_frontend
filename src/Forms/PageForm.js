@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Segment, Form, Divider } from 'semantic-ui-react';
 import {Redirect} from 'react-router-dom'
 import TidbitForm from "../Tiny/TidbitForm";
+import BandMemberForm from "../Tiny/BandMemberForm";
 
 class PageForm extends Component {
   // !!! add vlidations to make sure all fields are correct and male last name optional
@@ -179,6 +180,8 @@ class PageForm extends Component {
             type={this.state.type}
             linkList={this.state.linkList}
           />
+          {this.state.type === "bands" ?
+          <BandMemberForm /> : null}
           <Divider />
           <Form.TextArea
             label="Bio"

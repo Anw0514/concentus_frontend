@@ -242,7 +242,7 @@ class App extends Component {
               path="/register"
               render={() =>
                 this.state.loggedIn ? (
-                  <Redirect to="/discover" />
+                  <Redirect to="/create" />
                 ) : (
                   <SignUp
                     redirect={this.state.loggedIn}
