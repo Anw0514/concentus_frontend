@@ -13,6 +13,13 @@ class BandMemberForm extends Component {
 
   componentDidMount() {
       // fetch all musicians to return an obj of {name, id} & set the state
+      fetch("http://localhost:3000/musicians").then(resp => resp.json())
+      .then(musicians => {
+          const mObj = musicians.map(musician => ({key: musician.id, text: musician.name, value: musician}))
+          this.setState({
+              musList: mObj
+          })
+      })
   }
 
   addMusician() {
