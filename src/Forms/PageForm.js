@@ -20,7 +20,10 @@ class PageForm extends Component {
       links: [],
       lookings: [],
       genres: [],
-      linkList: []
+      linkList: [],
+      selectedMusician: null,
+      roleName: '',
+      members: []
     };
   }
 
@@ -82,6 +85,28 @@ class PageForm extends Component {
         [group]: value
       })
     }
+  }
+
+  handleChangeMember = (selectedMusician) => {
+    // callback for BandMamberForm to change the value of the musician select
+    this.setState({ selectedMusician })
+  }
+
+  handleChangeRole = (roleName) => {
+    // callback for BandMamberForm to change the value of the role input
+    this.setState({ roleName })
+  }
+
+  handleBandMemberButton = () => {
+    // combines the selected musician and role name and adds them to the band members array
+    const sm = this.state.selectedMusician
+    const role = this.state.roleName
+    const newMember = {id: sm.id, name: sm.name, type: sm.type, role: role}
+    this.setState({
+      members: [newMember, ...this.state.members],
+      selectedMusician: null,
+      roleName: null
+    })
   }
 
   handleSubmitForm = (e) => {
@@ -181,7 +206,13 @@ class PageForm extends Component {
             linkList={this.state.linkList}
           />
           {this.state.type === "bands" ?
-          <BandMemberForm /> : null}
+          <BandMemberForm 
+            musician={this.state.selectedMusician}
+            role={this.state.roleName}
+            changeMusician={this.handleChangeMember}
+            changeRole={this.handleChangeRole}
+            btn={this.handleBandMemberButton}
+          /> : null}
           <Divider />
           <Form.TextArea
             label="Bio"

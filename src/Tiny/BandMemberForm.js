@@ -22,29 +22,36 @@ class BandMemberForm extends Component {
       })
   }
 
-  addMusician() {
+  addMusician = (value) => {
       // post new ghost musician with the name given and add to state
+      this.setState({
+          musList: [{ key: value, text: value, value: value }, ...this.state.musList] 
+      })
   }
 
-
   render() {
-      return (<Form.Group inline fluid>
+      return (
+        <Form.Group inline fluid>
           <label>Add Members: </label>
           <Form.Select
-              search
-              options={this.state.musList}
-              allowAdditions
-              clearable
-              additionLabel='Add Musician'
-              placeholder="Find or Add a Musician"
-              onChange={this.handleChangeFile}
+            search
+            options={this.state.musList}
+            allowAdditions
+            clearable
+            additionLabel="Add Musician"
+            placeholder="Find or Add a Musician"
+            onChange={(e, { value }) => this.props.changeMusician(value)}
+            onAddItem={(e, { value }) => this.addMusician(value)}
+            value={this.props.musician}
           />
           <Form.Input
-              placeholder="What is their role?"
-              onChange={this.handleChangeFile}
+            placeholder="What is their role?"
+            onChange={(e, { value }) => this.props.changeRole(value)}
+            value={this.props.role}
           />
-          <button className='ui teal basic button'>Add Member</button>
-      </Form.Group>)
+          <button onClick={this.props.btn} className="ui teal basic button">Add Member</button>
+        </Form.Group>
+      );
   }
 }
 
