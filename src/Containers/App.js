@@ -85,6 +85,7 @@ class App extends Component {
 
   handleUpdatePage = (type, name, zip, bio, img, tidbits, address) => {
     // callback for /pageform when it is submitted and it's updating an existing page
+    const imgs = [img]
     const newPages = this.state.myPages.filter(checkpage => {
       return (
         this.state.selectedPage.id + this.state.selectedPage.model !==
@@ -101,7 +102,7 @@ class App extends Component {
         zip,
         user_id: this.state.user.id,
         bio,
-        img,
+        imgs,
         address,
         tidbits
       })

@@ -54,56 +54,64 @@ class SignUp extends Component {
   };
   
   handleZipChange = (e, { value }) => {
-        // callback for RegistrationEnd
-        this.setState({
-            zip: value
-        });
-    };
-    
-    handleDistanceChange = (e, { value }) => {
-        // callback for RegistrationEnd
-        this.setState({
-            distance: value
-        });
-    };
-    
-    handleTypeChange = (e, { value }) => {
-        // callback for RegistrationEnd
-        this.setState({
-            DistanceType: value
-        });
-    };
-    
-    handleEmailCheck = () => {
-        // checks if the email entered has already been taken
-        if (this.state.email) {
-            fetch("http://localhost:3000/email", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    email: this.state.email + this.state.domain
-                })
-            })
-            .then(resp => resp.json())
-            .then(status => {
-                if (status.error) {
-                    this.setState({
-                        error: true
-                    });
-                } else {
-                    this.setState({
-                        step: 2,
-                        error: false
-                    });
-                }
-            });
-        }
-    };
+      // callback for RegistrationEnd
+      this.setState({
+          zip: value
+      });
+  };
 
-    handleSignUpClick = () => {
-        // callback for RegistrationEnd
-        this.props.handleRegister(this.state)
-    };
+  handleNameChange = (e, { value }) => {
+    // callback for RegistrationEnd
+    this.setState({
+      name: value
+    })
+  }
+  
+  handleDistanceChange = (e, { value }) => {
+      // callback for RegistrationEnd
+      this.setState({
+          distance: value
+      });
+  };
+  
+  handleTypeChange = (e, { value }) => {
+      // callback for RegistrationEnd
+      this.setState({
+          DistanceType: value
+      });
+  };
+  
+  handleEmailCheck = () => {
+      // checks if the email entered has already been taken
+      if (this.state.email) {
+          fetch("http://localhost:3000/email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                  email: this.state.email + this.state.domain
+              })
+          })
+          .then(resp => resp.json())
+          .then(status => {
+              if (status.error) {
+                  this.setState({
+                      error: true
+                  });
+              } else {
+                  this.setState({
+                      step: 2,
+                      error: false
+                  });
+              }
+          });
+      }
+  };
+
+  handleSignUpClick = () => {
+      // callback for RegistrationEnd
+      // !!! make it impossible to submit without all fields being valid
+      this.props.handleRegister(this.state)
+  };
 
   render() {
     return (
@@ -125,6 +133,7 @@ class SignUp extends Component {
               distanceChange={this.handleDistanceChange}
               distanceTypeChange={this.handleTypeChange}
               signUp={this.handleSignUpClick}
+              nameChange={this.handleNameChange}
             />
           )}
           <div className="ui message SignUp container">

@@ -16,7 +16,8 @@ class PageCardFront extends Component {
                 page={this.props.page}
                 lookings={this.props.page.looking_for}
               />
-              <br />
+            </Card.Content>
+            <Card.Content extra>
               <Button
                 basic
                 color="teal"

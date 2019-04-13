@@ -7,6 +7,14 @@ class RegistrationEnd extends Component {
         return (
           <Segment className="login container">
             <Input
+              icon="user circle"
+              iconPosition="left"
+              placeholder="Full Name"
+              className="login field"
+              onChange={this.props.nameChange}
+              size="large"
+            />
+            <Input
               icon="lock"
               type="password"
               iconPosition="left"
