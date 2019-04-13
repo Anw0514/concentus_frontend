@@ -43,6 +43,7 @@ class BandMemberForm extends Component {
               placeholder="What is their role?"
               onChange={this.handleChangeFile}
           />
+          <button className='ui teal basic button'>Add Member</button>
       </Form.Group>)
   }
 }
