@@ -105,13 +105,13 @@ class PageForm extends Component {
     this.setState({
       members: [newMember, ...this.state.members],
       selectedMusician: null,
-      roleName: null
+      roleName: ''
     })
   }
 
   handleSubmitForm = (e) => {
     // calls the parent function to fetch and redirects to /mypages
-    const { type, name, zip, bio, file, links, lookings, genres, skills, address } = this.state
+    const { type, name, zip, bio, file, links, lookings, genres, skills, address, members } = this.state
 
     const tidbits = skills.concat(links, lookings, genres)
 
@@ -123,6 +123,7 @@ class PageForm extends Component {
         bio,
         file,
         tidbits,
+        members,
         address
       );
     } else {
@@ -133,6 +134,7 @@ class PageForm extends Component {
         bio,
         file,
         tidbits,
+        members,
         address
       );
     }

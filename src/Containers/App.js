@@ -29,7 +29,7 @@ class App extends Component {
     };
   }
 
-  handleNewPage = (type, name, zip, bio, img, tidbits, address) => {
+  handleNewPage = (type, name, zip, bio, img, tidbits, members, address) => {
     // adds a new page after it has been posted to the database by PageForm
 
     fetch(`http://localhost:3000/${type}`, {
@@ -44,6 +44,7 @@ class App extends Component {
         bio,
         img,
         address,
+        members,
         tidbits
       })
     })
@@ -83,7 +84,7 @@ class App extends Component {
     });
   };
 
-  handleUpdatePage = (type, name, zip, bio, img, tidbits, address) => {
+  handleUpdatePage = (type, name, zip, bio, img, tidbits, members, address) => {
     // callback for /pageform when it is submitted and it's updating an existing page
     const imgs = [img]
     const newPages = this.state.myPages.filter(checkpage => {
@@ -104,16 +105,20 @@ class App extends Component {
         bio,
         imgs,
         address,
+        members,
         tidbits
       })
     })
       .then(resp => resp.json())
       .then(page => {
-        this.setState({
-          myPages: [...newPages, page],
-          selectedPage: false,
-          formDone: true
-        }, () => setTimeout(this.setState({ formDone: false }), 1000));
+        this.setState(
+          {
+            myPages: [...newPages, page],
+            selectedPage: false,
+            formDone: true
+          },
+          () => setTimeout(this.setState({ formDone: false }), 1000)
+        );
       });
   };
 

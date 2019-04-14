@@ -24,8 +24,17 @@ class BandMemberForm extends Component {
 
   addMusician = (value) => {
       // post new ghost musician with the name given and add to state
-      this.setState({
-          musList: [{ key: value, text: value, value: value }, ...this.state.musList] 
+      fetch("http://localhost:3000/ghost_musicians", {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+              name: value
+          })
+      }).then(resp => resp.json())
+      .then(ghost => {
+          this.setState({
+              musList: [{ key: ghost.id, text: ghost.name, value: ghost }, ...this.state.musList] 
+          })
       })
   }
 
