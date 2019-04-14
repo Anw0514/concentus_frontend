@@ -89,7 +89,9 @@ class PageForm extends Component {
 
   handleChangeMember = (selectedMusician) => {
     // callback for BandMamberForm to change the value of the musician select
-    this.setState({ selectedMusician })
+    if ( typeof selectedMusician !== 'string' ) {
+      this.setState({ selectedMusician })
+    }
   }
 
   handleChangeRole = (roleName) => {

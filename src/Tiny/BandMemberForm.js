@@ -35,6 +35,7 @@ class BandMemberForm extends Component {
           this.setState({
               musList: [{ key: ghost.id, text: ghost.name, value: ghost }, ...this.state.musList] 
           })
+          this.props.changeMusician(ghost);
       })
   }
 
@@ -47,7 +48,7 @@ class BandMemberForm extends Component {
             options={this.state.musList}
             allowAdditions
             clearable
-            additionLabel="Add Musician"
+            additionLabel="Add Musician: "
             placeholder="Find or Add a Musician"
             onChange={(e, { value }) => this.props.changeMusician(value)}
             onAddItem={(e, { value }) => this.addMusician(value)}
