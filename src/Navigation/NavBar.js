@@ -39,16 +39,8 @@ class NavBar extends Component {
                   </NavLink>
                 </Dropdown.Item>
                 <Dropdown.Item active={false} onClick={() => {}}>
-                  <Icon name="settings" />
-                  Settings
-                </Dropdown.Item>
-                <Dropdown.Item active={false} onClick={() => {}}>
                   <Icon name="paper plane outline" />
                   Messages
-                </Dropdown.Item>
-                <Dropdown.Item active={false} onClick={() => {}}>
-                  <Icon name="calendar check outline" />
-                  Gigs
                 </Dropdown.Item>
                 {user.name ? (
                   <Dropdown.Item active={false} onClick={leave}>

@@ -11,9 +11,12 @@ class PageCardFront extends Component {
             <Card.Content>
               <Card.Header>{page.name}</Card.Header>
               <Card.Meta>{page.model} &nbsp; // &nbsp; {page.zip}</Card.Meta>
-              <Placeholder style={{ width: "100%", paddingTop: "70%" }}>
+              {/* <Placeholder style={{ width: "100%", paddingTop: "70%" }}>
                 <Placeholder.Image />
-              </Placeholder>
+              </Placeholder> */}
+              {page.yt ?
+              <iframe title='Demo Video' width='100%' height='auto' src={page.yt}></iframe>
+              : null}
               <Data
                 page={page}
                 lookings={page.looking_for}
