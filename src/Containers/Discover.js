@@ -10,6 +10,7 @@ class Discover extends Component {
             searchTerm: '',
             pages: [],
             typePages: [],
+            type: 'All',
             results: [],
             genre: false
         }
@@ -31,8 +32,10 @@ class Discover extends Component {
         })
     }
 
-    handleSearchChange = (term) => {
-        let pages = this.state.typePages
+    handleSearchChange = (term, pages) => {
+        if (!pages) {
+            pages = this.state.typePages
+        }
         let results = []
         this.state.genre ?
         results = pages.filter(page => (
@@ -44,10 +47,15 @@ class Discover extends Component {
     }
     
     handlePageTypeChange = (type) => {
-        let typePages = this.state.pages.filter(page => (
-            page.model === type
-        ))
-        this.setState({ typePages }, this.handleSearchChange(this.state.searchTerm))
+        let typePages;
+        if (type === 'All') {
+            typePages = this.state.pages
+        } else {
+            typePages = this.state.pages.filter(page => (
+                page.model === type
+            ))
+        }
+        this.setState({ typePages, type }, this.handleSearchChange(this.state.searchTerm, typePages))
     }
 
     render() {
@@ -56,8 +64,10 @@ class Discover extends Component {
                 <SearchBar 
                     searchTerm={this.state.searchTerm}
                     genre={this.state.genre}
-                    changeType={this.handleSearchTypeChange} 
+                    changeSearchType={this.handleSearchTypeChange} 
+                    changeType={this.handlePageTypeChange}
                     changeSearch={this.handleSearchChange}
+                    type={this.state.type}
                 />
                 <br />
                 <PageIndex pages={this.state.results} discover={true} />
