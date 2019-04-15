@@ -1,22 +1,31 @@
 import React, { Component, Fragment } from 'react'
-import { Button, Card, Icon } from 'semantic-ui-react'
+import { Button, Card, Icon, List } from 'semantic-ui-react'
 import Data from "../Tiny/Data";
 
 class PageCardBack extends Component {
 
     render() {
+      const page = this.props.page
         return (
           <Card fluid color="teal">
             <Card.Content>
-              <Card.Header>{this.props.page.name}</Card.Header>
-              <Card.Meta>{this.props.page.model}</Card.Meta>
-              <Card.Description>{this.props.page.bio}</Card.Description>
+              <Card.Header>{page.name}</Card.Header>
+              <Card.Meta>{page.model}</Card.Meta>
+              <Card.Description>{page.bio}</Card.Description>
               <Data
-                page={this.props.page}
-                links={this.props.page.links}
-                genres={this.props.page.genres}
-                skills={this.props.page.skills}
+                page={page}
+                links={page.links}
+                genres={page.genres}
+                skills={page.skills}
               />
+              {page.model === 'Band' ?
+              <List>{ page.members.map(mem => 
+                (<List.Item>
+                <List.Header>{mem.member.name}</List.Header>
+                  {mem.role}
+                </List.Item>)
+              )}
+              </List> : null}
             </Card.Content>
             <Card.Content extra>
               <Icon
@@ -31,7 +40,7 @@ class PageCardBack extends Component {
                     basic
                     color="teal"
                     content="Edit"
-                    onClick={() => this.props.editPage(this.props.page)}
+                    onClick={() => this.props.editPage(page)}
                   />
                   <Button
                     basic
@@ -39,7 +48,7 @@ class PageCardBack extends Component {
                     content="Delete"
                     onClick={() => {
                       console.log(this);
-                      this.props.removePage(this.props.page);
+                      this.props.removePage(page);
                     }}
                   />
                 </Fragment>

@@ -3,18 +3,20 @@ import Data from '../Tiny/Data'
 import { Button, Card, Placeholder } from 'semantic-ui-react'
 
 class PageCardFront extends Component {
+
     render() {
+      const page = this.props.page
         return (
           <Card fluid color="teal">
             <Card.Content>
-              <Card.Header>{this.props.page.name}</Card.Header>
-              <Card.Meta>{this.props.page.model}</Card.Meta>
+              <Card.Header>{page.name}</Card.Header>
+              <Card.Meta>{page.model}</Card.Meta>
               <Placeholder style={{ width: "100%", paddingTop: "70%" }}>
                 <Placeholder.Image />
               </Placeholder>
               <Data
-                page={this.props.page}
-                lookings={this.props.page.looking_for}
+                page={page}
+                lookings={page.looking_for}
               />
             </Card.Content>
             <Card.Content extra>
@@ -22,7 +24,7 @@ class PageCardFront extends Component {
                 basic
                 color="teal"
                 content="More Info"
-                onClick={() => this.props.toBack(this.props.page)}
+                onClick={() => this.props.toBack(page)}
               />
             </Card.Content>
           </Card>
