@@ -51,6 +51,13 @@ class RegistrationEnd extends Component {
               size="large"
             />
             <Input
+              fluid
+              label="Profile Photo"
+              type="file"
+              placeholder="Choose a file"
+              onChange={this.handleChangeFile}
+            />
+            {/* <Input
               icon="location arrow"
               type="number"
               iconPosition="left"
@@ -70,7 +77,7 @@ class RegistrationEnd extends Component {
                   ]}
                 />
               }
-            />
+            /> */}
             <div
               className="login field button"
               onClick={this.props.signUp}

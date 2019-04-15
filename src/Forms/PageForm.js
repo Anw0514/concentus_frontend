@@ -30,7 +30,7 @@ class PageForm extends Component {
   componentDidMount(){
     // checks to see if there is a page passed to decide if the form will be for edit or create
     const page = this.props.page
-    if (page.model) {
+    if (page && page.model) {
       let skills = []
       if (page.model === 'Musician') {
         skills = page.skills.map(skill => skill.id)
@@ -150,36 +150,8 @@ class PageForm extends Component {
     return (
       <Segment className="form">
         <Form>
-          <Form.Group widths="equal">
-            <Form.Input
-              fluid
-              label="Name"
-              placeholder="Display Name"
-              value={this.state.name}
-              onChange={this.handleChangeName}
-            />
-            <Form.Field
-              fluid
-              label="Zip"
-              control="input"
-              type="number"
-              placeholder="Zip Code"
-              max={100000}
-              min={10000}
-              value={this.state.zip}
-              onChange={this.handleChangeZip}
-            />
-            <Form.Field
-              fluid
-              label="Profile Photo"
-              control="input"
-              type="file"
-              placeholder="Choose a file"
-              onChange={this.handleChangeFile}
-            />
-          </Form.Group>
-          <Form.Group inline>
-            <label>Type</label>
+          <Form.Group fluid inline>
+            <label>Type: </label>
             <Form.Radio
               label="Musician"
               value="musicians"
@@ -200,6 +172,44 @@ class PageForm extends Component {
             />
           </Form.Group>
           <Divider />
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              label="Name"
+              placeholder="Display Name"
+              value={this.state.name}
+              onChange={this.handleChangeName}
+            />
+            <Form.Field
+              fluid
+              label="Zip"
+              control="input"
+              type="number"
+              placeholder="Zip Code"
+              max={100000}
+              min={10000}
+              value={this.state.zip}
+              onChange={this.handleChangeZip}
+            />
+            {this.state.type === 'venues' ? (
+              <Form.Field
+                fluid
+                label="Address"
+                control="input"
+                placeholder="Enter the address of the Venue"
+                onChange={this.handleChangeFile}
+              />
+            ) : (
+              <Form.Field
+                fluid
+                label="Youtube Link"
+                control="input"
+                placeholder="Enter a link to a demo video"
+                onChange={this.handleChangeFile}
+              />
+            )}
+          </Form.Group>
+          <Divider />
           <TidbitForm
             add={this.addTidbit}
             skills={this.state.skills}
@@ -209,14 +219,15 @@ class PageForm extends Component {
             type={this.state.type}
             linkList={this.state.linkList}
           />
-          {this.state.type === "bands" ?
-          <BandMemberForm 
-            musician={this.state.selectedMusician}
-            role={this.state.roleName}
-            changeMusician={this.handleChangeMember}
-            changeRole={this.handleChangeRole}
-            btn={this.handleBandMemberButton}
-          /> : null}
+          {this.state.type === "bands" ? (
+            <BandMemberForm
+              musician={this.state.selectedMusician}
+              role={this.state.roleName}
+              changeMusician={this.handleChangeMember}
+              changeRole={this.handleChangeRole}
+              btn={this.handleBandMemberButton}
+            />
+          ) : null}
           <Divider />
           <Form.TextArea
             label="Bio"

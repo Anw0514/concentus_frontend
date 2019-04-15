@@ -99,7 +99,7 @@ class TidbitForm extends Component {
         const { skillList, linkList, genreList, lookingList } = this.state
         const type = this.props.type
         return (
-          <Container className='tidbit container'>
+          <Container fluid className='tidbit container'>
             {type === 'musicians' ? <Fragment>
             <label className='tidbit label'>Skills</label>
             <Dropdown

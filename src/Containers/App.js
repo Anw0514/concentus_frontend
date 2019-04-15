@@ -21,7 +21,7 @@ class App extends Component {
       myPages: [],
       discoverPages: [],
       bookings: [],
-      selectedPage: false,
+      selectedPage: null,
       user: {},
       loginFailed: false,
       loggedIn: false,
@@ -114,7 +114,7 @@ class App extends Component {
         this.setState(
           {
             myPages: [...newPages, page],
-            selectedPage: false,
+            selectedPage: null,
             formDone: true
           },
           () => setTimeout(this.setState({ formDone: false }), 1000)
@@ -198,7 +198,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar user={this.state.user} leave={this.handleLogout} />
+          <NavBar user={this.state.user} leave={this.handleLogout} removeEdit={this.handleEdit} />
           <Switch>
             <Route
               exact

@@ -10,7 +10,7 @@ class PageCardFront extends Component {
           <Card fluid color="teal">
             <Card.Content>
               <Card.Header>{page.name}</Card.Header>
-              <Card.Meta>{page.model}</Card.Meta>
+              <Card.Meta>{page.model} &nbsp; // &nbsp; {page.zip}</Card.Meta>
               <Placeholder style={{ width: "100%", paddingTop: "70%" }}>
                 <Placeholder.Image />
               </Placeholder>

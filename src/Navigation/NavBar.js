@@ -19,7 +19,7 @@ class NavBar extends Component {
               </NavLink>
             </Menu.Item>
             <Dropdown item icon="big user circle" simple>
-              <Dropdown.Menu>
+              <Dropdown.Menu onClick={() => this.props.removeEdit(null)}>
                 {user.name ? (
                   <Dropdown.Item active={false}>
                     <Icon name="user circle" />
@@ -28,7 +28,6 @@ class NavBar extends Component {
                 ) : null}
                 <Dropdown.Item active={false} onClick={() => {}}>
                   <NavLink to="/mypages">
-                  {/* male this remove selected page */}
                     <Icon name="list alternate outline" />
                     My Pages
                   </NavLink>

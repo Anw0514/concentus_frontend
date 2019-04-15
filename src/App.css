@@ -131,6 +131,10 @@ div.text.filtered{
   min-width: 80px !important;
 }
 
+.ui.form .inline.fields {
+  justify-content: center;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
