@@ -39,6 +39,7 @@ class PageForm extends Component {
       let linkList = page.links.map(link => ({ key: link.id, text: link.value, value: link.id}))
       let genres = page.genres.map(genre => genre.id);
       let lookings = page.looking_for.map(looking => looking.id);
+      let members = page.members.map(bm => ({ id: bm.member.id, name: bm.member.name, type: bm.member.type, role: bm.role }))
       this.setState({
         name: page.name,
         zip: page.zip,
@@ -48,6 +49,7 @@ class PageForm extends Component {
         links,
         lookings,
         genres,
+        members,
         linkList
       })
     }
@@ -230,6 +232,7 @@ class PageForm extends Component {
               changeMusician={this.handleChangeMember}
               changeRole={this.handleChangeRole}
               btn={this.handleBandMemberButton}
+              members={this.state.members}
             />
           ) : null}
           <Divider />
