@@ -14,7 +14,8 @@ class PageForm extends Component {
       type: "",
       bio: "",
       file: "",
-      address: '',
+      address: "",
+      yt_video: '',
       redirect: false,
       skills: [],
       links: [],
@@ -22,36 +23,50 @@ class PageForm extends Component {
       genres: [],
       linkList: [],
       selectedMusician: null,
-      roleName: '',
+      roleName: "",
       members: []
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // checks to see if there is a page passed to decide if the form will be for edit or create
-    const page = this.props.page
+    const page = this.props.page;
     if (page && page.model) {
-      let skills = []
-      if (page.model === 'Musician') {
-        skills = page.skills.map(skill => skill.id)
+      let skills = [];
+      if (page.model === "Musician") {
+        skills = page.skills.map(skill => skill.id);
+      }
+      let yt_video = ''
+      if (page.yt) {
+        yt_video = page.yt
       }
       let links = page.links.map(link => link.id);
-      let linkList = page.links.map(link => ({ key: link.id, text: link.value, value: link.id}))
+      let linkList = page.links.map(link => ({
+        key: link.id,
+        text: link.value,
+        value: link.id
+      }));
       let genres = page.genres.map(genre => genre.id);
       let lookings = page.looking_for.map(looking => looking.id);
-      let members = page.members.map(bm => ({ id: bm.member.id, name: bm.member.name, type: bm.member.type, role: bm.role }))
+      let members = page.members.map(bm => ({
+        id: bm.member.id,
+        name: bm.member.name,
+        type: bm.member.type,
+        role: bm.role
+      }));
       this.setState({
         name: page.name,
         zip: page.zip,
-        type: page.model.toLowerCase() + 's',
+        type: page.model.toLowerCase() + "s",
         bio: page.bio,
         skills,
         links,
         lookings,
+        yt_video,
         genres,
         members,
         linkList
-      })
+      });
     }
   }
 
@@ -70,42 +85,52 @@ class PageForm extends Component {
     this.setState({ zip: parseInt(e.target.value) });
   };
 
+  handleChangeAddress = (e, { value }) => {
+    // changes address selection value
+    this.setState({ address: value });
+  };
+
+  handleChangeVid = (e, { value }) => {
+    // changes vid selection value
+    this.setState({ yt_video: value });
+  };
+
   handleChangeType = (e, { value }) => {
     // changes type selection value
     this.setState({ type: value });
   };
 
-  handleChangeFile = (e) => {
+  handleChangeFile = e => {
     // changes file selection value
     this.setState({ file: e.target.value });
   };
 
   addTidbit = (value, group) => {
     // callback for Tidbit that changes the value of the input dropdowns on change
-    if (typeof value[value.length - 1] !== 'string'){
+    if (typeof value[value.length - 1] !== "string") {
       this.setState({
         [group]: value
-      })
+      });
     }
-  }
+  };
 
-  handleChangeMember = (selectedMusician) => {
+  handleChangeMember = selectedMusician => {
     // callback for BandMamberForm to change the value of the musician select
-    if ( typeof selectedMusician !== 'string' ) {
-      this.setState({ selectedMusician })
+    if (typeof selectedMusician !== "string") {
+      this.setState({ selectedMusician });
     }
-  }
+  };
 
-  handleChangeRole = (roleName) => {
+  handleChangeRole = roleName => {
     // callback for BandMamberForm to change the value of the role input
-    this.setState({ roleName })
-  }
+    this.setState({ roleName });
+  };
 
   handleBandMemberButton = () => {
     // combines the selected musician and role name and adds them to the band members array
-    const sm = this.state.selectedMusician
-    const role = this.state.roleName
-    const newMember = {id: sm.id, name: sm.name, type: sm.type, role: role}
+    const sm = this.state.selectedMusician;
+    const role = this.state.roleName;
+    const newMember = { id: sm.id, name: sm.name, type: sm.type, role: role };
     this.setState(
       {
         members: [newMember, ...this.state.members],
@@ -114,21 +139,37 @@ class PageForm extends Component {
       },
       console.log([newMember, ...this.state.members], this.state.members)
     );
-    
-  }
+  };
 
-  handleBMX = (member) => {
-    const newMembers = this.state.members.filter(mem => mem !== member)
+  handleBMX = member => {
+    const newMembers = this.state.members.filter(mem => mem !== member);
     this.setState({
       members: newMembers
-    })
-  }
+    });
+  };
 
-  handleSubmitForm = (e) => {
+  handleSubmitForm = e => {
     // calls the parent function to fetch and redirects to /mypages
-    const { type, name, zip, bio, file, links, lookings, genres, skills, address, members } = this.state
+    const {
+      type,
+      name,
+      zip,
+      bio,
+      file,
+      links,
+      lookings,
+      genres,
+      skills,
+      yt_video,
+      address,
+      members
+    } = this.state;
 
-    const tidbits = skills.concat(links, lookings, genres)
+    const tidbits = skills.concat(links, lookings, genres);
+    let yt = yt_video
+    if (yt.includes('https://www.youtube.com/watch?v=') && yt !== '') {
+      yt = yt_video.split('watch?v=').join('embed/')
+    }
 
     if (this.props.page) {
       this.props.updatePage(
@@ -139,19 +180,11 @@ class PageForm extends Component {
         file,
         tidbits,
         members,
+        yt,
         address
       );
     } else {
-      this.props.addPage(
-        type,
-        name,
-        zip,
-        bio,
-        file,
-        tidbits,
-        members,
-        address
-      );
+      this.props.addPage(type, name, zip, bio, file, tidbits, members, yt, address);
     }
   };
 
@@ -204,21 +237,21 @@ class PageForm extends Component {
               value={this.state.zip}
               onChange={this.handleChangeZip}
             />
-            {this.state.type === 'venues' ? (
-              <Form.Field
+            {this.state.type === "venues" ? (
+              <Form.Input
                 fluid
                 label="Address"
-                control="input"
                 placeholder="Enter the address of the Venue"
-                onChange={this.handleChangeFile}
+                value={this.state.address}
+                onChange={this.handleChangeAddress}
               />
             ) : (
-              <Form.Field
+              <Form.Input
                 fluid
                 label="Youtube Link"
-                control="input"
                 placeholder="Enter a link to a demo video"
-                onChange={this.handleChangeFile}
+                value={this.state.yt_video}
+                onChange={this.handleChangeVid}
               />
             )}
           </Form.Group>

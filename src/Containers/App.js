@@ -29,7 +29,7 @@ class App extends Component {
     };
   }
 
-  handleNewPage = (type, name, zip, bio, img, tidbits, members, address) => {
+  handleNewPage = (type, name, zip, bio, img, tidbits, members, yt_video, address) => {
     // adds a new page after it has been posted to the database by PageForm
     console.log(members, tidbits)
 
@@ -46,6 +46,7 @@ class App extends Component {
         img,
         address,
         members,
+        yt_video,
         tidbits
       }})
     })
@@ -85,7 +86,7 @@ class App extends Component {
     });
   };
 
-  handleUpdatePage = (type, name, zip, bio, img, tidbits, members, address) => {
+  handleUpdatePage = (type, name, zip, bio, img, tidbits, members, yt_video, address) => {
     // callback for /pageform when it is submitted and it's updating an existing page
     const imgs = [img]
     const newPages = this.state.myPages.filter(checkpage => {
@@ -107,6 +108,7 @@ class App extends Component {
         imgs,
         address,
         members,
+        yt_video,
         tidbits
       }})
     })
