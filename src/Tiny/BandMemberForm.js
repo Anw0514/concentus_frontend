@@ -74,7 +74,14 @@ class BandMemberForm extends Component {
               {this.props.members.map(member => (
                 <List.Item>
                   <List.Content floated="right">
-                    <Button basic circular color="teal" icon="x" size='mini' />
+                    <Button 
+                      basic 
+                      circular 
+                      color="teal" 
+                      icon="x" 
+                      size='mini' 
+                      onClick={() =>this.props.remove(member)} 
+                    />
                   </List.Content>
                   <List.Header>{member.name}</List.Header>
                   <List.Content>{member.role}</List.Content>

@@ -117,6 +117,13 @@ class PageForm extends Component {
     
   }
 
+  handleBMX = (member) => {
+    const newMembers = this.state.members.filter(mem => mem !== member)
+    this.setState({
+      members: newMembers
+    })
+  }
+
   handleSubmitForm = (e) => {
     // calls the parent function to fetch and redirects to /mypages
     const { type, name, zip, bio, file, links, lookings, genres, skills, address, members } = this.state
@@ -233,6 +240,7 @@ class PageForm extends Component {
               changeRole={this.handleChangeRole}
               btn={this.handleBandMemberButton}
               members={this.state.members}
+              remove={this.handleBMX}
             />
           ) : null}
           <Divider />
