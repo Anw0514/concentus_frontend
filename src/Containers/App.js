@@ -31,13 +31,14 @@ class App extends Component {
 
   handleNewPage = (type, name, zip, bio, img, tidbits, members, address) => {
     // adds a new page after it has been posted to the database by PageForm
+    console.log(members, tidbits)
 
     fetch(`http://localhost:3000/${type}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
+      body: JSON.stringify({bc: {
         name,
         zip,
         user_id: this.state.user.id,
@@ -46,7 +47,7 @@ class App extends Component {
         address,
         members,
         tidbits
-      })
+      }})
     })
       .then(resp => resp.json())
       .then(page => {
@@ -98,7 +99,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
+      body: JSON.stringify({bc: {
         name,
         zip,
         user_id: this.state.user.id,
@@ -107,7 +108,7 @@ class App extends Component {
         address,
         members,
         tidbits
-      })
+      }})
     })
       .then(resp => resp.json())
       .then(page => {

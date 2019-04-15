@@ -104,11 +104,15 @@ class PageForm extends Component {
     const sm = this.state.selectedMusician
     const role = this.state.roleName
     const newMember = {id: sm.id, name: sm.name, type: sm.type, role: role}
-    this.setState({
-      members: [newMember, ...this.state.members],
-      selectedMusician: null,
-      roleName: ''
-    })
+    this.setState(
+      {
+        members: [newMember, ...this.state.members],
+        selectedMusician: null,
+        roleName: ""
+      },
+      console.log([newMember, ...this.state.members], this.state.members)
+    );
+    
   }
 
   handleSubmitForm = (e) => {
@@ -117,7 +121,7 @@ class PageForm extends Component {
 
     const tidbits = skills.concat(links, lookings, genres)
 
-    if (this.props.page.model) {
+    if (this.props.page) {
       this.props.updatePage(
         type,
         name,
