@@ -13,6 +13,7 @@ import {
   Redirect
 } from "react-router-dom";
 import '../App.css';
+import MessageIndex from '../Indices/MessageIndex';
 
 class App extends Component {
   constructor() {
@@ -23,6 +24,7 @@ class App extends Component {
       bookings: [],
       selectedPage: null,
       user: {},
+      messages: [],
       loginFailed: false,
       loggedIn: false,
       formDone: false
@@ -144,9 +146,10 @@ class App extends Component {
         } else {
           const user = jsonResp.user;
           this.setState({
-            user,
+            user: user.user,
             myPages: user.my_pages,
             discoverPages: user.discover_pages,
+            messages: user.messages,
             loggedIn: true,
             loginFailed: false
           });
@@ -277,6 +280,21 @@ class App extends Component {
                     />
                   </div>
                 )
+              }
+            />
+            <Route
+              exact
+              path="/messages"
+              render={() =>
+                !this.state.loggedIn ? (
+                  <Redirect to="/login" />
+                ) : (
+                    <div className="wide pageDiv">
+                      <MessageIndex
+                        messages={this.state.messages}
+                      />
+                    </div>
+                  )
               }
             />
           </Switch>

@@ -39,8 +39,10 @@ class NavBar extends Component {
                   </NavLink>
                 </Dropdown.Item>
                 <Dropdown.Item active={false} onClick={() => {}}>
-                  <Icon name="paper plane outline" />
+                  <NavLink to="/messages">
+                    <Icon name="paper plane outline" />
                   Messages
+                  </NavLink>
                 </Dropdown.Item>
                 {user.name ? (
                   <Dropdown.Item active={false} onClick={leave}>

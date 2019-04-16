@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Settings extends Component {
+class MessageForm extends Component {
     render() {
         return (
             <div>
-                Settings
+                MessageForm
             </div>
         )
     }
 }
 
-export default Settings
+export default MessageForm
