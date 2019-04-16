@@ -1,21 +1,22 @@
 import React, { Component, Fragment } from "react";
 import MessageCard from "../Cards/MessageCard";
 import { Feed, Grid, Segment, Header, Image } from "semantic-ui-react";
+import MessagePage from "../Containers/MessagePage";
 
 class MessageIndex extends Component {
   
   constructor(){
       super()
       this.state = {
-          conversations: []
+          conversations: [],
+          selectedUser: null
       }
   }
 
   componentDidMount() {
     if (this.props.conversations) {
       this.setState({
-        conversations: this.props.conversations,
-        selectedUser: this.props.user
+        conversations: this.props.conversations
       })
     }
   }
@@ -43,7 +44,7 @@ class MessageIndex extends Component {
                     message={message}
                     selectUser={this.handleSelectUser}
                     sent={convo.messages[0].sent}
-                    user={this.state.selectedUser}
+                    user={convo}
                 />
                 );
             })}
@@ -51,25 +52,9 @@ class MessageIndex extends Component {
         </Segment>
         </Grid.Column>
         <Grid.Column width={6}>
-        <Segment>
-            <Header as='h1' textAlign='center'>
-                <Image circular src='https://fortunedotcom.files.wordpress.com/2019/01/boo.jpg' />
-            </Header>
-            {/* <Feed size='large'>
-            {this.state.selectedUser.messages.map(convo => {
-                let message = convo.messages[convo.messages.length - 1].slice(-50)
-                if (message.length > 50) {
-                message = convo.messages[convo.messages.length - 1].slice(-50) + '...'
-                }
-                return (
-                <MessageCard
-                    name={convo.name}
-                    message={message}
-                />
-                );
-            })}
-            </Feed> */}
-        </Segment>
+        {this.state.selectedUser ?
+        <MessagePage user={this.state.selectedUser}/>
+        : null}
         </Grid.Column>
       </Grid>
     );

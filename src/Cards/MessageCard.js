@@ -10,7 +10,7 @@ class MessageCard extends Component {
       </Feed.Label>
       <Feed.Content>
         <Feed.Summary>
-          <Feed.User className='teal text' onClick={() => {}}>{this.props.name}</Feed.User>
+          <Feed.User className='teal text' onClick={() => this.props.selectUser(this.props.user)}>{this.props.name}</Feed.User>
         </Feed.Summary>
         <Feed.Meta>
             {this.props.sent ? <Icon name='reply'/> : null}
