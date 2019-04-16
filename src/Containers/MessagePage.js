@@ -5,7 +5,6 @@ class MessagePage extends Component {
 
   render() {
     const { name, avatar, email, messages } = this.props.user
-
     return (
         <Segment>
             <Header as='h1' textAlign='center'>
@@ -16,11 +15,16 @@ class MessagePage extends Component {
             </Header.Content>
             </Header>
             <Feed size='large'>
-                {messages.map(msg => {
+                {messages.reverse().map(msg => {
+                    let sender = name;
+                    if (msg.sent === true) { sender = this.props.me.name }
                     return (
                       <Feed.Event>
                         <Feed.Label image="https://fortunedotcom.files.wordpress.com/2019/01/boo.jpg" />
-                        <Feed.Content content={msg.content} />
+                        <Feed.Content>
+                        <Feed.Summary>{sender}</Feed.Summary>
+                        <Feed.Extra text>{msg.content}</Feed.Extra>
+                        </Feed.Content>
                       </Feed.Event>
                     );
                 })}

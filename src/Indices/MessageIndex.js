@@ -53,7 +53,7 @@ class MessageIndex extends Component {
         </Grid.Column>
         <Grid.Column width={6}>
         {this.state.selectedUser ?
-        <MessagePage user={this.state.selectedUser}/>
+        <MessagePage user={this.state.selectedUser} me={this.props.user}/>
         : null}
         </Grid.Column>
       </Grid>
