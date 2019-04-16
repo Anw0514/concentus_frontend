@@ -24,7 +24,7 @@ class App extends Component {
       bookings: [],
       selectedPage: null,
       user: {},
-      messages: [],
+      conversations: [],
       loginFailed: false,
       loggedIn: false,
       formDone: false
@@ -149,7 +149,7 @@ class App extends Component {
             user: user.user,
             myPages: user.my_pages,
             discoverPages: user.discover_pages,
-            messages: user.messages,
+            conversations: user.conversations,
             loggedIn: true,
             loginFailed: false
           });
@@ -289,9 +289,10 @@ class App extends Component {
                 !this.state.loggedIn ? (
                   <Redirect to="/login" />
                 ) : (
-                    <div className="wide pageDiv">
+                    <div className="pageDiv">
                       <MessageIndex
-                        messages={this.state.messages}
+                        conversations={this.state.conversations}
+                        user={this.state.user}
                       />
                     </div>
                   )
