@@ -5,7 +5,7 @@ class MessageForm extends Component {
     render() {
         return (
           <Segment>
-            <Form>
+                <Form onSubmit={(e) => this.props.submit(e.target[0].value)} >
               <Form.Field
                 id="form-textarea-control"
                 control={TextArea}

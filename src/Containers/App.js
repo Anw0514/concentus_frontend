@@ -139,6 +139,20 @@ class App extends Component {
     })
   }
 
+  handleSubmitMessage = (message) => {
+    debugger
+    fetch("http://localhost:3000/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        content: message,
+        sender_id: this.state.user.id,
+        recipient_id: this.state.selectedUser.id
+      })
+    }).then(resp => resp.json())
+    .then(message => console.log(message))
+  }
+
   handleLogin = (email, password) => {
     // authenticaes a login attempt and sets the state accordingly
     fetch("http://localhost:3000/login", {
@@ -316,6 +330,7 @@ class App extends Component {
                       user={this.state.user}
                       selectedUser={this.state.selectedUser}
                       selectUser={this.handleSelectUser}
+                      sendMessage={this.handleSubmitMessage}
                     />
                   </div>
                 )
