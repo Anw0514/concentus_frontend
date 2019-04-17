@@ -151,22 +151,24 @@ class App extends Component {
     }).then(resp => resp.json())
     .then(message => {
       let found = false
+      let convoObj = this.state.selectedUser
+
       let convos = this.state.conversations.map(c => {
-        if (c.id === this.state.selectedUser.id) {
+        if (c.id === convoObj.id) {
           c.messages.unshift(message)
           found = true
         }
         return c
       })
-      console.log(convos)
-      console.log(found)
+
       if (!found) {
-        const convoObj = Object.assign({}, this.state.selectedUser, {messages: [message]})
+        convoObj = Object.assign({}, convoObj, {messages: [message]})
         convos = [convoObj, ...convos]
       }
-      console.log(convos)
+
       this.setState({
-        conversations: convos
+        conversations: convos,
+        selectedUser: convoObj
       })
     })
   }
