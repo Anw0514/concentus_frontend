@@ -244,7 +244,8 @@ class App extends Component {
     this.setState({
       loggedIn: false,
       user: {},
-      loginFailed: false
+      loginFailed: false,
+      selectedUser: null
     });
   };
 

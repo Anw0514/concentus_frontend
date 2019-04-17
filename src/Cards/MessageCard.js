@@ -6,7 +6,7 @@ class MessageCard extends Component {
     return (
       <Feed.Event>
       <Feed.Label>
-        <img src='https://fortunedotcom.files.wordpress.com/2019/01/boo.jpg' />
+        <img src={this.props.avatar} />
       </Feed.Label>
       <Feed.Content>
         <Feed.Summary>
