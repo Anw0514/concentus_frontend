@@ -8,7 +8,7 @@ class MessagePage extends Component {
     return (
         <Segment>
             <Header as='h1' textAlign='center'>
-                <Image circular src='https://fortunedotcom.files.wordpress.com/2019/01/boo.jpg' />
+                <Image circular src={avatar} />
             <Header.Content>
                 {name}
                 <Header.Subheader>{email}</Header.Subheader>
@@ -18,10 +18,11 @@ class MessagePage extends Component {
             <Feed size='small'>
                 {messages.slice().reverse().map(msg => {
                     let sender = name;
-                    if (msg.sent === true) { sender = this.props.me.name }
+                    let img = avatar
+                    if (msg.sent === true) { sender = this.props.me.name; img = this.props.me.avatar }
                     return (
                       <Feed.Event>
-                        <Feed.Label image="https://fortunedotcom.files.wordpress.com/2019/01/boo.jpg" />
+                        <Feed.Label image={img} />
                         <Feed.Content>
                         <Feed.Summary>{sender}</Feed.Summary>
                         <Feed.Extra text>{msg.content}</Feed.Extra>

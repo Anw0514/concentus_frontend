@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Segment, Message, Dropdown, Input } from "semantic-ui-react";
+import ImageUploader from "react-images-upload";
 
 class RegistrationEnd extends Component {
   // !!! add name field
@@ -50,34 +51,13 @@ class RegistrationEnd extends Component {
               onChange={this.props.zipChange}
               size="large"
             />
-            <Input
-              fluid
-              label="Profile Photo"
-              type="file"
-              placeholder="Choose a file"
-              onChange={this.handleChangeFile}
+            <ImageUploader
+              withIcon={true}
+              buttonText='Choose Profile Photo'
+              onChange={this.props.imageChange}
+              imgExtension={['.jpg', '.png']}
+              maxFileSize={5242880}
             />
-            {/* <Input
-              icon="location arrow"
-              type="number"
-              iconPosition="left"
-              placeholder="Max distance for connections"
-              className="login field"
-              min={10}
-              onChange={this.props.distanceChange}
-              size="large"
-              labelPosition="right"
-              label={
-                <Dropdown
-                  defaultValue="mi"
-                  onChange={this.props.distanceTypeChange}
-                  options={[
-                    { key: "mi", text: "mi", value: "mi" },
-                    { key: "km", text: "km", value: "km" }
-                  ]}
-                />
-              }
-            /> */}
             <div
               className="login field button"
               onClick={this.props.signUp}

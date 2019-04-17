@@ -210,7 +210,8 @@ class App extends Component {
     name,
     zip,
     distance,
-    distanceType
+    distanceType,
+    avatar
   }) => {
     // creates a new user in the backend and logs them in
     fetch("http://localhost:3000/users", {
@@ -222,13 +223,14 @@ class App extends Component {
         name: name,
         zip: zip,
         distance: distance,
-        distance_type: distanceType
+        distance_type: distanceType,
+        avatar: avatar
       })
     })
       .then(resp => resp.json())
       .then(user => {
         this.setState({
-          user,
+          user: user.user,
           myPages: user.my_pages,
           discoverPages: user.discover_pages,
           loggedIn: true,

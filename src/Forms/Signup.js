@@ -14,6 +14,7 @@ class SignUp extends Component {
       zip: 20000,
       distance: 10,
       distanceType: "mi",
+      avatar: '',
       step: 1,
       error: false
     };
@@ -80,6 +81,11 @@ class SignUp extends Component {
           DistanceType: value
       });
   };
+
+  handleAvatar = (file, picUrls) => {
+    const avatar = picUrls.slice(-1)[0];
+    this.setState({avatar})
+  }
   
   handleEmailCheck = () => {
       // checks if the email entered has already been taken
@@ -134,6 +140,7 @@ class SignUp extends Component {
               distanceTypeChange={this.handleTypeChange}
               signUp={this.handleSignUpClick}
               nameChange={this.handleNameChange}
+              imageChange={this.handleAvatar}
             />
           )}
           <div className="ui message SignUp container">

@@ -18,13 +18,14 @@ class MessageIndex extends Component {
                 message = message + '...'
                 }
                 return (
-                <MessageCard
+                  <MessageCard
                     name={convo.name}
+                    avatar={convo.avatar}
                     message={message}
                     selectUser={this.props.selectUser}
                     sent={convo.messages[0].sent}
                     user={convo}
-                />
+                  />
                 );
             })}
         </Feed>
