@@ -22,12 +22,6 @@ class MessageIndex extends Component {
     }
   }
   
-  handleSelectUser = (user) => {
-    this.setState({
-        selectedUser: user
-    })
-  }
-
   render() {
     return (
       <Grid relaxed='very' columns={12} centered>
@@ -44,7 +38,7 @@ class MessageIndex extends Component {
                 <MessageCard
                     name={convo.name}
                     message={message}
-                    selectUser={this.handleSelectUser}
+                    selectUser={this.props.selectUser}
                     sent={convo.messages[0].sent}
                     user={convo}
                 />
@@ -54,8 +48,8 @@ class MessageIndex extends Component {
         </Segment>
         </Grid.Column>
         <Grid.Column width={6}>
-        {this.state.selectedUser ?
-        <MessagePage user={this.state.selectedUser} me={this.props.user}/>
+        {this.props.selectedUser ?
+        <MessagePage user={this.props.selectedUser} me={this.props.user}/>
         : null}
         <MessageForm />
         </Grid.Column>

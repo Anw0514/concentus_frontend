@@ -14,6 +14,7 @@ class MessagePage extends Component {
                 <Header.Subheader>{email}</Header.Subheader>
             </Header.Content>
             </Header>
+            {messages ? 
             <Feed size='large'>
                 {messages.slice().reverse().map(msg => {
                     let sender = name;
@@ -29,6 +30,7 @@ class MessagePage extends Component {
                     );
                 })}
             </Feed>
+            : null}
         </Segment>
     );
   }

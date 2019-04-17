@@ -15,6 +15,7 @@ import {
 import '../App.css';
 import MessageIndex from '../Indices/MessageIndex';
 
+
 class App extends Component {
   constructor() {
     super();
@@ -23,6 +24,7 @@ class App extends Component {
       discoverPages: [],
       bookings: [],
       selectedPage: null,
+      selectedUser: null,
       user: {},
       conversations: [],
       loginFailed: false,
@@ -126,6 +128,14 @@ class App extends Component {
         );
       });
   };
+
+
+  handleSelectUser = (user) => {
+    this.setState({
+      selectedUser: user
+    })
+  }
+
 
   handleLogin = (email, password) => {
     // authenticaes a login attempt and sets the state accordingly
@@ -293,6 +303,8 @@ class App extends Component {
                       <MessageIndex
                         conversations={this.state.conversations}
                         user={this.state.user}
+                        selectedUser={this.state.selectedUser}
+                        selectUser={this.handleSelectUser}
                       />
                     </div>
                   )
