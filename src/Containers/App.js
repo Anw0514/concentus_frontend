@@ -140,7 +140,6 @@ class App extends Component {
   }
 
   handleSubmitMessage = (message) => {
-    debugger
     fetch("http://localhost:3000/messages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -150,7 +149,26 @@ class App extends Component {
         recipient_id: this.state.selectedUser.id
       })
     }).then(resp => resp.json())
-    .then(message => console.log(message))
+    .then(message => {
+      let found = false
+      let convos = this.state.conversations.map(c => {
+        if (c.id === this.state.selectedUser.id) {
+          c.messages.unshift(message)
+          found = true
+        }
+        return c
+      })
+      console.log(convos)
+      console.log(found)
+      if (!found) {
+        const convoObj = Object.assign({}, this.state.selectedUser, {messages: [message]})
+        convos = [convoObj, ...convos]
+      }
+      console.log(convos)
+      this.setState({
+        conversations: convos
+      })
+    })
   }
 
   handleLogin = (email, password) => {
