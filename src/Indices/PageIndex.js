@@ -35,9 +35,13 @@ class PageIndex extends Component {
                   removePage={this.props.removePage}
                   editPage={this.props.editPage}
                   notMine={this.props.discover}
+                  selectUser={this.props.selectUser}
                 />
               ) : (
-                <PageCardFront page={page} toBack={this.handleToBack} />
+                <PageCardFront
+                  page={page}
+                  toBack={this.handleToBack}
+                />
               );
             })}
             {this.props.discover ? null : (

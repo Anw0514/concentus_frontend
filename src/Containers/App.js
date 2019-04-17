@@ -25,6 +25,7 @@ class App extends Component {
       bookings: [],
       selectedPage: null,
       selectedUser: null,
+      goMessage: false,
       user: {},
       conversations: [],
       loginFailed: false,
@@ -129,13 +130,12 @@ class App extends Component {
       });
   };
 
-
   handleSelectUser = (user) => {
     this.setState({
-      selectedUser: user
+      selectedUser: user,
+      goMessage: true
     })
   }
-
 
   handleLogin = (email, password) => {
     // authenticaes a login attempt and sets the state accordingly
@@ -214,7 +214,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar user={this.state.user} leave={this.handleLogout} removeEdit={this.handleEdit} />
+          <NavBar
+            user={this.state.user}
+            leave={this.handleLogout}
+            removeEdit={this.handleEdit}
+          />
           <Switch>
             <Route
               exact
@@ -223,7 +227,11 @@ class App extends Component {
                 !this.state.loggedIn ? (
                   <Redirect to="/login" />
                 ) : (
-                  <Discover pages={this.state.discoverPages} />
+                  <Discover
+                    redirect={this.state.goMessage}
+                    pages={this.state.discoverPages}
+                    selectUser={this.handleSelectUser}
+                  />
                 )
               }
             />
@@ -299,15 +307,15 @@ class App extends Component {
                 !this.state.loggedIn ? (
                   <Redirect to="/login" />
                 ) : (
-                    <div className="pageDiv">
-                      <MessageIndex
-                        conversations={this.state.conversations}
-                        user={this.state.user}
-                        selectedUser={this.state.selectedUser}
-                        selectUser={this.handleSelectUser}
-                      />
-                    </div>
-                  )
+                  <div className="pageDiv">
+                    <MessageIndex
+                      conversations={this.state.conversations}
+                      user={this.state.user}
+                      selectedUser={this.state.selectedUser}
+                      selectUser={this.handleSelectUser}
+                    />
+                  </div>
+                )
               }
             />
           </Switch>

@@ -10,7 +10,7 @@ class PageCardBack extends Component {
           <Card fluid color="teal">
             <Card.Content>
               <Card.Header>{page.name}</Card.Header>
-              <Card.Meta>{page.model} &nbsp; // &nbsp; {page.zip}</Card.Meta>
+              <Card.Meta>Created by: {page.user.name}</Card.Meta>
               <Card.Description>{page.bio}</Card.Description>
               <Data
                 page={page}
@@ -34,7 +34,14 @@ class PageCardBack extends Component {
                 color="teal"
                 onClick={() => this.props.toBack({})}
               />
-              {this.props.notMine ? null : (
+              {this.props.notMine ? (
+                <Button
+                  basic
+                  color="teal"
+                  content="Send Message"
+                  onClick={() => this.props.selectUser(page.user)}
+                />
+              ) : (
                 <Fragment>
                   <Button
                     basic

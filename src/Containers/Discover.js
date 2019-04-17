@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PageIndex from "../Indices/PageIndex";
 import SearchBar from '../Navigation/SearchBar'
+import {Redirect} from 'react-router-dom'
 
 class Discover extends Component {
 
@@ -59,20 +60,29 @@ class Discover extends Component {
     }
 
     render() {
+
+        if (this.props.redirect) {
+            return < Redirect to = "/messages" />;
+        }
+
         return (
-            <div className='pageDiv'>
-                <SearchBar 
-                    searchTerm={this.state.searchTerm}
-                    genre={this.state.genre}
-                    changeSearchType={this.handleSearchTypeChange} 
-                    changeType={this.handlePageTypeChange}
-                    changeSearch={this.handleSearchChange}
-                    type={this.state.type}
-                />
-                <br />
-                <PageIndex pages={this.state.results} discover={true} />
-            </div>
-        )
+          <div className="pageDiv">
+            <SearchBar
+              searchTerm={this.state.searchTerm}
+              genre={this.state.genre}
+              changeSearchType={this.handleSearchTypeChange}
+              changeType={this.handlePageTypeChange}
+              changeSearch={this.handleSearchChange}
+              type={this.state.type}
+            />
+            <br />
+            <PageIndex
+              pages={this.state.results}
+              selectUser={this.props.selectUser}
+              discover={true}
+            />
+          </div>
+        );
     }
 }
 
