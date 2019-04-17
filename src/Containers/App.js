@@ -131,9 +131,11 @@ class App extends Component {
   };
 
   handleSelectUser = (user) => {
+    const message = !!user
+
     this.setState({
       selectedUser: user,
-      goMessage: true
+      goMessage: message
     })
   }
 
@@ -218,6 +220,7 @@ class App extends Component {
             user={this.state.user}
             leave={this.handleLogout}
             removeEdit={this.handleEdit}
+            goMessage={this.handleSelectUser}
           />
           <Switch>
             <Route

@@ -15,7 +15,7 @@ class MessagePage extends Component {
             </Header.Content>
             </Header>
             {messages ? 
-            <Feed size='large'>
+            <Feed size='small'>
                 {messages.slice().reverse().map(msg => {
                     let sender = name;
                     if (msg.sent === true) { sender = this.props.me.name }

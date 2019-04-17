@@ -13,7 +13,7 @@ class NavBar extends Component {
             <h1>Concentus</h1>
           </Menu.Item>
           <Menu.Menu position="right">
-            <Menu.Item name="discover" active={false}>
+            <Menu.Item onClick={() => this.props.goMessage(null)} name="discover" active={false}>
               <NavLink to="/discover">
                 <Icon name="list ul" size="big" />
               </NavLink>
