@@ -16,7 +16,7 @@ class PageCardFront extends Component {
               </Placeholder> */}
               {page.yt ?
               <iframe title='Demo Video' width='100%' height='auto' src={page.yt}></iframe>
-              : null}
+              : <div>{page.bio}</div>}
               <Data
                 page={page}
                 lookings={page.looking_for}

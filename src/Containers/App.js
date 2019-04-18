@@ -233,6 +233,7 @@ class App extends Component {
           user: user.user,
           myPages: user.my_pages,
           discoverPages: user.discover_pages,
+          conversations: user.conversations,
           loggedIn: true,
           loginFailed: false
         });
@@ -245,7 +246,11 @@ class App extends Component {
       loggedIn: false,
       user: {},
       loginFailed: false,
-      selectedUser: null
+      selectedUser: null,
+      myPages: [],
+      discoverPages: [],
+      conversations: [],
+      selectedPage: null
     });
   };
 

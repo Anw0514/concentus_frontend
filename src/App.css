@@ -17,6 +17,11 @@ html {
 
 .message.index {
   overflow-y: scroll;
+  max-height: 561.27px;
+}
+
+.message.index.small {
+  max-height: 25vh;
 }
 
 .ui.inverted.pointing.secondary.menu {

@@ -13,7 +13,7 @@ class MessageIndex extends Component {
         <Grid.Column width={6}>
         <Feed size='large' className='message index'>
             {this.props.conversations.map(convo => {
-                let message = convo.messages[0].content.slice(-50)
+                let message = convo.messages[0].content.slice(0, 50)
                 if (message.length > 49) {
                 message = message + '...'
                 }
@@ -32,9 +32,11 @@ class MessageIndex extends Component {
         </Grid.Column>
         <Grid.Column width={6}>
         {this.props.selectedUser ?
+        <Fragment>
         <MessagePage user={this.props.selectedUser} me={this.props.user}/>
-        : null}
         <MessageForm submit={this.props.sendMessage} />
+        </Fragment>
+        : null}
         </Grid.Column>
         </Grid.Row>
       </Grid>

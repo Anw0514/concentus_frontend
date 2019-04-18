@@ -66,7 +66,7 @@ class Discover extends Component {
         }
 
         return (
-          <div className="pageDiv">
+          <div className="wide pageDiv">
             <SearchBar
               searchTerm={this.state.searchTerm}
               genre={this.state.genre}
