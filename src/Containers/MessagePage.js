@@ -15,7 +15,7 @@ class MessagePage extends Component {
             </Header.Content>
             </Header>
             {messages ? 
-            <Feed size='small'>
+          <Feed size='small' className='message index small'>
                 {messages.slice().reverse().map(msg => {
                     let sender = name;
                     let img = avatar

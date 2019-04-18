@@ -48,12 +48,15 @@ class PageForm extends Component {
       }));
       let genres = page.genres.map(genre => genre.id);
       let lookings = page.looking_for.map(looking => looking.id);
-      let members = page.members.map(bm => ({
-        id: bm.member.id,
-        name: bm.member.name,
-        type: bm.member.type,
-        role: bm.role
-      }));
+      let members = []
+      if (page.members) {
+        members = page.members.map(bm => ({
+          id: bm.member.id,
+          name: bm.member.name,
+          type: bm.member.type,
+          role: bm.role
+        }));
+      }
       this.setState({
         name: page.name,
         zip: page.zip,
