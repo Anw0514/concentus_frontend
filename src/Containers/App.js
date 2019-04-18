@@ -132,9 +132,13 @@ class App extends Component {
 
   handleSelectUser = (user) => {
     const message = !!user
+    let newUser = user
+    if (message) {
+      newUser = this.state.conversations.find(u => u.id === user.id)
+    }
 
     this.setState({
-      selectedUser: user,
+      selectedUser: newUser,
       goMessage: message
     })
   }
