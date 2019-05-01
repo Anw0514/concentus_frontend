@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Dropdown, Icon, Menu } from "semantic-ui-react";
 import { Link as NavLink } from 'react-router-dom'
 
@@ -21,10 +21,18 @@ class NavBar extends Component {
             <Dropdown item icon="big user circle" simple>
               <Dropdown.Menu onClick={() => this.props.removeEdit(null)}>
                 {user.name ? (
-                  <Dropdown.Item active={false}>
-                    <Icon name="user circle" />
-                    Hi, {user.name}!
-                  </Dropdown.Item>
+                  <Fragment>
+                    <Dropdown.Item active={false}>
+                      <Icon name="user circle" />
+                      Hi, {user.name}!
+                    </Dropdown.Item>
+                    <Dropdown.Item active={false}>
+                    <NavLink to='/settings'>
+                      <Icon name="settings" />
+                      Settings
+                    </NavLink>
+                    </Dropdown.Item>
+                  </Fragment>
                 ) : null}
                 <Dropdown.Item active={false} onClick={() => {}}>
                   <NavLink to="/mypages">
