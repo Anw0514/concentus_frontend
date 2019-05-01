@@ -5,13 +5,13 @@ import ImageUploader from "react-images-upload";
 class Settings extends Component {
     render() {
         return (
-            <Segment className="login container">
+            <Segment>
                 <Input
                     icon="user circle"
                     iconPosition="left"
                     placeholder="Full Name"
                     className="login field"
-                    onChange={this.props.nameChange}
+                    onChange={() => {}}
                     size="large"
                 />
                 <Input
@@ -20,7 +20,7 @@ class Settings extends Component {
                     iconPosition="left"
                     placeholder="Password"
                     className="login field"
-                    onChange={this.props.passwordChange}
+                    onChange={() => {}}
                     size="large"
                 />
                 <Input
@@ -29,7 +29,7 @@ class Settings extends Component {
                     iconPosition="left"
                     placeholder="Re-Enter Password"
                     className="login field"
-                    onChange={this.props.passwordCheck}
+                    onChange={() => {}}
                     size="large"
                 />
                 {this.props.error ? (
@@ -47,19 +47,19 @@ class Settings extends Component {
                     className="login field"
                     max={99950}
                     min={501}
-                    onChange={this.props.zipChange}
+                    onChange={() => {}}
                     size="large"
                 />
                 <ImageUploader
                     withIcon={true}
                     buttonText='Choose Profile Photo'
-                    onChange={this.props.imageChange}
+                    onChange={() => {}}
                     imgExtension={['.jpg', '.png']}
                     maxFileSize={5242880}
                 />
                 <div
                     className="login field button"
-                    onClick={this.props.signUp}
+                    onClick={() => {}}
                 >
                     <h3>Submit</h3>
                 </div>

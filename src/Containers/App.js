@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import '../App.css';
 import MessageIndex from '../Indices/MessageIndex';
+import Settings from '../Forms/Settings';
 
 
 class App extends Component {
@@ -347,6 +348,21 @@ class App extends Component {
                     />
                   </div>
                 )
+              }
+            />
+            <Route
+              exact
+              path="/settings"
+              render={() =>
+                !this.state.loggedIn ? (
+                  <Redirect to="/login" />
+                ) : (
+                    <div className="wide pageDiv">
+                      <Settings
+                        user={this.state.user}
+                      />
+                    </div>
+                  )
               }
             />
             <Route
