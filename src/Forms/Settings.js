@@ -4,6 +4,7 @@ import ImageUploader from "react-images-upload";
 
 class Settings extends Component {
     render() {
+        const { name, avatar, email} = this.props.user;
         return (
         <Grid relaxed='very' columns={12} centered>
         <Grid.Row stretched>
@@ -71,10 +72,10 @@ class Settings extends Component {
         <Grid.Column width='6'>
             <Segment>
                 <Header as='h1' textAlign='center'>
-                    <Image circular src={'avatar'} />
+                    <Image circular src={avatar} />
                     <Header.Content>
-                    {'name'}
-                    <Header.Subheader>{'email'}</Header.Subheader>
+                    {name}
+                    <Header.Subheader>{email}</Header.Subheader>
                     </Header.Content>
                 </Header>
             </Segment>
