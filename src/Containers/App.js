@@ -135,7 +135,10 @@ class App extends Component {
     const message = !!user
     let newUser = user
     if (message) {
-      newUser = this.state.conversations.find(u => u.id === user.id)
+      let convoUser = this.state.conversations.find(u => u.id === user.id)
+      if (!!convoUser) {
+        newUser = convoUser
+      }
     }
 
     this.setState({
