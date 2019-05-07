@@ -5,6 +5,7 @@ import { Link as NavLink } from 'react-router-dom'
 class NavBar extends Component {
 
   render() {
+    console.log(this.props.user)
     const { user, leave } = this.props
     return (
       <div>
