@@ -10,6 +10,7 @@ class Settings extends Component {
         <Grid.Row stretched>
         <Grid.Column width='6'>
             <Segment>
+                <label>Full Name</label>
                 <Input
                     icon="user circle"
                     iconPosition="left"
@@ -18,8 +19,9 @@ class Settings extends Component {
                     onChange={() => {}}
                     size="large"
                     />
+                <label>Email Address</label>
                 <Input
-                    icon="lock"
+                    icon="mail"
                     type="password"
                     iconPosition="left"
                     placeholder="Password"
@@ -27,22 +29,16 @@ class Settings extends Component {
                     onChange={() => {}}
                     size="large"
                     />
+                <label>Distance</label>
                 <Input
-                    icon="lock"
-                    type="password"
+                    icon="location arrow"
                     iconPosition="left"
                     placeholder="Re-Enter Password"
                     className="login field"
                     onChange={() => {}}
                     size="large"
                     />
-                {this.props.error ? (
-                    <Message
-                    error
-                    header="Passwords Don't Match"
-                    content="Please make sure your password entries match."
-                    />
-                    ) : null}
+                <label>Zip Code</label>
                 <Input
                     icon="map marker alternate"
                     type="number"
