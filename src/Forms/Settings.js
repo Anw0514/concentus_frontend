@@ -15,6 +15,19 @@ class Settings extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.props.user) {
+            const { name, avatar, distance, email, zip } = this.props.user
+            this.setState({
+                name,
+                email,
+                distance,
+                zip,
+                img: avatar
+            })
+        }
+    }
+
     changeName = (e, { value }) => {
         this.setState({
             name: value
