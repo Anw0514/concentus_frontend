@@ -3,6 +3,48 @@ import { Segment, Message, Image, Header, Input, Grid } from "semantic-ui-react"
 import ImageUploader from "react-images-upload";
 
 class Settings extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            name: '',
+            email: '',
+            distance: '',
+            zip: null,
+            img: ''
+        }
+    }
+
+    changeName = (e, { value }) => {
+        this.setState({
+            name: value
+        })
+    }
+
+    changeEmail = (e, { value }) => {
+        this.setState({
+            email: value
+        })
+    }
+
+    changeDis = (e, { value }) => {
+        this.setState({
+            distance: value
+        })
+    }
+
+    changeImg = (e, { value }) => {
+        this.setState({
+            img: value
+        })
+    }
+
+    changeZip = (e, { value }) => {
+        this.setState({
+            img: value
+        })
+    }
+
     render() {
         const { name, avatar, email} = this.props.user;
         return (
@@ -16,26 +58,28 @@ class Settings extends Component {
                     iconPosition="left"
                     placeholder="Full Name"
                     className="login field"
-                    onChange={() => {}}
+                    onChange={this.changeName}
+                    value={this.state.name}
                     size="large"
                     />
                 <label>Email Address</label>
                 <Input
                     icon="mail"
-                    type="password"
                     iconPosition="left"
-                    placeholder="Password"
                     className="login field"
-                    onChange={() => {}}
+                    placeholder="Email Address"
+                    onChange={this.changeEmail}
+                    value={this.state.email}
                     size="large"
                     />
                 <label>Distance</label>
                 <Input
                     icon="location arrow"
                     iconPosition="left"
-                    placeholder="Re-Enter Password"
+                    placeholder="Distance"
                     className="login field"
-                    onChange={() => {}}
+                    onChange={this.changeDis}
+                    value={this.state.distance}
                     size="large"
                     />
                 <label>Zip Code</label>
@@ -47,13 +91,15 @@ class Settings extends Component {
                     className="login field"
                     max={99950}
                     min={501}
-                    onChange={() => {}}
+                    onChange={this.changeZip}
+                    value={this.state.zip}
                     size="large"
                     />
                 <ImageUploader
                     withIcon={true}
                     buttonText='Choose Profile Photo'
-                    onChange={() => {}}
+                    onChange={this.changeImg}
+                    value={this.state.img}
                     imgExtension={['.jpg', '.png']}
                     maxFileSize={5242880}
                     />
