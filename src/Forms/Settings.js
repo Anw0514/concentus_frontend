@@ -124,9 +124,9 @@ class Settings extends Component {
             </Segment>
         </Grid.Column>
         <Grid.Column width='6'>
-            <Segment>
+            <Segment textAlign='center'>
+                <Image circular src={img} size='small' centered />
                 <Header as='h1' textAlign='center'>
-                    <Image circular src={img} />
                     <Header.Content>
                     {name}
                     <Header.Subheader>{email}</Header.Subheader>
