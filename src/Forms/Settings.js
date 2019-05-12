@@ -46,20 +46,19 @@ class Settings extends Component {
         })
     }
 
-    changeImg = (e, { value }) => {
-        this.setState({
-            img: value
-        })
+    changeImg = (file, picUrls) => {
+        const img = picUrls.slice(-1)[0];
+        this.setState({ img })
     }
 
     changeZip = (e, { value }) => {
         this.setState({
-            img: value
+            zip: value
         })
     }
 
     render() {
-        const { name, avatar, email} = this.props.user;
+        const { name, img, zip, email, distance } = this.state ;
         return (
         <Grid relaxed='very' columns={12} centered>
         <Grid.Row stretched>
@@ -72,7 +71,7 @@ class Settings extends Component {
                     placeholder="Full Name"
                     className="login field"
                     onChange={this.changeName}
-                    value={this.state.name}
+                    value={name}
                     size="large"
                     />
                 <label>Email Address</label>
@@ -82,7 +81,7 @@ class Settings extends Component {
                     className="login field"
                     placeholder="Email Address"
                     onChange={this.changeEmail}
-                    value={this.state.email}
+                    value={email}
                     size="large"
                     />
                 <label>Distance</label>
@@ -92,7 +91,7 @@ class Settings extends Component {
                     placeholder="Distance"
                     className="login field"
                     onChange={this.changeDis}
-                    value={this.state.distance}
+                    value={distance}
                     size="large"
                     />
                 <label>Zip Code</label>
@@ -105,14 +104,14 @@ class Settings extends Component {
                     max={99950}
                     min={501}
                     onChange={this.changeZip}
-                    value={this.state.zip}
+                    value={zip}
                     size="large"
                     />
                 <ImageUploader
                     withIcon={true}
                     buttonText='Choose Profile Photo'
                     onChange={this.changeImg}
-                    value={this.state.img}
+                    value={img}
                     imgExtension={['.jpg', '.png']}
                     maxFileSize={5242880}
                     />
@@ -127,7 +126,7 @@ class Settings extends Component {
         <Grid.Column width='6'>
             <Segment>
                 <Header as='h1' textAlign='center'>
-                    <Image circular src={avatar} />
+                    <Image circular src={img} />
                     <Header.Content>
                     {name}
                     <Header.Subheader>{email}</Header.Subheader>
