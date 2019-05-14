@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Segment, Message, Image, Header, Input, Grid } from "semantic-ui-react";
+import { Segment, Message, Image, Header, Input, Grid, Label, Icon } from "semantic-ui-react";
 import ImageUploader from "react-images-upload";
 
 class Settings extends Component {
@@ -28,33 +28,47 @@ class Settings extends Component {
         }
     }
 
+    saved() {
+        const { name, email, distance, zip, avatar } = this.props.user
+        return (name === this.state.name &&
+                email === this.state.email &&
+                distance === this.state.distance &&
+                zip === this.state.zip &&
+                avatar === this.state.img)
+    }
+
     changeName = (e, { value }) => {
         this.setState({
             name: value
         })
+        this.saved()
     }
 
     changeEmail = (e, { value }) => {
         this.setState({
             email: value
         })
+        this.saved()
     }
 
     changeDis = (e, { value }) => {
         this.setState({
             distance: value
         })
+        this.saved()
     }
 
     changeImg = (file, picUrls) => {
         const img = picUrls.slice(-1)[0];
         this.setState({ img })
+        this.saved()
     }
 
     changeZip = (e, { value }) => {
         this.setState({
             zip: value
         })
+        this.saved()
     }
 
     render() {
@@ -129,9 +143,17 @@ class Settings extends Component {
                 <Header as='h1' textAlign='center'>
                     <Header.Content>
                     {name}
-                    <Header.Subheader>{email}</Header.Subheader>
+                    <Header.Subheader>{email} | {zip}</Header.Subheader>
                     </Header.Content>
                 </Header>
+            { this.saved() ? 
+                <Label color='teal'>
+                    <Icon name="check circle outline" />
+                    Saved
+                </Label>
+            :   <Label>
+                    Unsaved
+                </Label>}
             </Segment>
         </Grid.Column>
         </Grid.Row>
