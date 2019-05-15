@@ -98,7 +98,7 @@ class Settings extends Component {
                     value={email}
                     size="large"
                     />
-                <label>Distance</label>
+                {/* <label>Distance</label>
                 <Input
                     icon="location arrow"
                     iconPosition="left"
@@ -107,7 +107,7 @@ class Settings extends Component {
                     onChange={this.changeDis}
                     value={distance}
                     size="large"
-                    />
+                    /> */}
                 <label>Zip Code</label>
                 <Input
                     icon="map marker alternate"
@@ -139,7 +139,7 @@ class Settings extends Component {
         </Grid.Column>
         <Grid.Column width='6'>
             <Segment textAlign='center'>
-                <Image circular src={img} size='small' centered />
+                <Image circular src={img} size='medium' centered />
                 <Header as='h1' textAlign='center'>
                     <Header.Content>
                     {name}
@@ -147,13 +147,8 @@ class Settings extends Component {
                     </Header.Content>
                 </Header>
             { this.saved() ? 
-                <Label color='teal'>
-                    <Icon name="check circle outline" />
-                    Saved
-                </Label>
-            :   <Label>
-                    Unsaved
-                </Label>}
+                <Label color='teal' content="Saved" icon="check circle outline" />
+            :   <Label content="Unsaved" />}
             </Segment>
         </Grid.Column>
         </Grid.Row>
