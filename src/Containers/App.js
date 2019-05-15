@@ -260,7 +260,12 @@ class App extends Component {
         avatar,
         email
       })
-    }).then(resp => resp.json()).then(jsonUser => console.log(jsonUser))
+    }).then(resp => resp.json())
+    .then(jsonUser => {
+      this.setState({
+        user: jsonUser
+      })
+    })
   }
 
   handleLogout = () => {

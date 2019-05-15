@@ -33,7 +33,7 @@ class Settings extends Component {
         return (name === this.state.name &&
                 email === this.state.email &&
                 distance === this.state.distance &&
-                zip === this.state.zip &&
+                zip == this.state.zip &&
                 avatar === this.state.img)
     }
 
@@ -74,6 +74,9 @@ class Settings extends Component {
     handleSubmit = () => {
         const { name, email, zip, img } = this.state
         this.props.updateUser(name, zip, img, email)
+        console.log(this.state)
+        console.log(this.props.user)
+        this.saved()
     }
 
     render() {
