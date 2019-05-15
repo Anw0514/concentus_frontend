@@ -248,6 +248,10 @@ class App extends Component {
       });
   };
 
+  handleUpdateUser = (name, zip, avatar, email) => {
+    console.log(name, zip, avatar, email)
+  }
+
   handleLogout = () => {
     // callback for navbar to allow a logout
     this.setState({
@@ -363,6 +367,7 @@ class App extends Component {
                     <div className="wide pageDiv">
                       <Settings
                         user={this.state.user}
+                        updateUser={this.handleUpdateUser}
                       />
                     </div>
                   )

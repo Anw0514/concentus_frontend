@@ -71,6 +71,11 @@ class Settings extends Component {
         this.saved()
     }
 
+    handleSubmit = () => {
+        const { name, email, zip, img } = this.state
+        this.props.updateUser(name, zip, img, email)
+    }
+
     render() {
         const { name, img, zip, email, distance } = this.state ;
         return (
@@ -131,7 +136,7 @@ class Settings extends Component {
                     />
                 <div
                     className="login field button"
-                    onClick={() => {}}
+                    onClick={this.handleSubmit}
                     >
                     <h3>Submit</h3>
                 </div>
