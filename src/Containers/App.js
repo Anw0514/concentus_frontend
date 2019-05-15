@@ -249,7 +249,18 @@ class App extends Component {
   };
 
   handleUpdateUser = (name, zip, avatar, email) => {
-    console.log(name, zip, avatar, email)
+    fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        zip,
+        avatar,
+        email
+      })
+    }).then(resp => resp.json()).then(jsonUser => console.log(jsonUser))
   }
 
   handleLogout = () => {
