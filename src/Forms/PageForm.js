@@ -6,6 +6,7 @@ import BandMemberForm from "../Tiny/BandMemberForm";
 
 class PageForm extends Component {
   // !!! add vlidations to make sure all fields are correct and male last name optional
+  // !!! make many many members be not ugly
   constructor() {
     super();
     this.state = {
@@ -169,6 +170,7 @@ class PageForm extends Component {
     } = this.state;
 
     const tidbits = skills.concat(links, lookings, genres);
+    
     let yt = yt_video
     if (yt.includes('https://www.youtube.com/watch?v=') && yt !== '') {
       yt = yt_video.split('watch?v=').join('embed/')
