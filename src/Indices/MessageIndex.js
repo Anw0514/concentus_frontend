@@ -7,10 +7,13 @@ import MessageForm from "../Forms/MessageForm";
 class MessageIndex extends Component {
   
   render() {
+
+    const user = this.props.selectedUser
+
     return (
       <Grid relaxed='very' columns={12} centered>
       <Grid.Row stretched >
-        <Grid.Column width={6}>
+        <Grid.Column width={user ? 6 : 8}>
         <Feed size='large' className='message index'>
             {this.props.conversations.map(convo => {
                 let message = convo.messages[0].content.slice(0, 50)
@@ -30,14 +33,14 @@ class MessageIndex extends Component {
             })}
         </Feed>
         </Grid.Column>
+        {user ?
         <Grid.Column width={6}>
-        {this.props.selectedUser ?
         <Fragment>
-        <MessagePage user={this.props.selectedUser} me={this.props.user}/>
+        <MessagePage user={user} me={this.props.user}/>
         <MessageForm submit={this.props.sendMessage} />
         </Fragment>
-        : null}
         </Grid.Column>
+        : null}
         </Grid.Row>
       </Grid>
     );
